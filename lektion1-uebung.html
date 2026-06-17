@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Linie 1 Beruf B1/B2 – Lektion 1: Eine neue Stelle | Lern Deutsch mit Arash</title>
+<script data-goatcounter="https://aguitoo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<style>
+  :root{
+    --accent:#e8820c;        /* Linie 1 Beruf Orange */
+    --accent-deep:#b5610a;
+    --accent-soft:#fbe3c4;
+    --paper-warm:#fdf2e2;
+    --ink:#2c2418;
+    --ink-soft:#6b5d48;
+    --ok:#3f8f4f;
+    --ok-bg:#e6f4e8;
+    --bad:#c0392b;
+    --bad-bg:#fbe7e4;
+    --card:#ffffff;
+    --line:#ecd9bf;
+    --shadow:0 6px 24px rgba(120,75,10,.12);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:linear-gradient(160deg,var(--paper-warm),#fff7ec);color:var(--ink);
+    line-height:1.5;min-height:100vh}
+  .wrap{max-width:680px;margin:0 auto;padding:16px 16px 64px}
+  header.top{display:flex;align-items:center;gap:12px;padding:8px 0 16px}
+  header.top .logo{width:42px;height:42px;border-radius:12px;background:var(--accent);
+    display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:20px;box-shadow:var(--shadow)}
+  header.top h1{font-size:1.05rem;margin:0;font-weight:800}
+  header.top p{margin:0;font-size:.78rem;color:var(--ink-soft)}
+  .backbar{margin:4px 0 14px}
+  .backbtn{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--line);
+    color:var(--accent-deep);font-weight:700;font-size:.9rem;padding:9px 14px;border-radius:999px;cursor:pointer}
+  .backbtn:active{transform:scale(.97)}
+  /* Übersicht */
+  .overview h2{font-size:1.25rem;margin:.2em 0 .1em}
+  .overview .lead{color:var(--ink-soft);font-size:.92rem;margin:0 0 18px}
+  .module-card{background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:16px;margin:0 0 14px;
+    box-shadow:var(--shadow);display:flex;gap:14px;align-items:flex-start;cursor:pointer;transition:transform .12s}
+  .module-card:active{transform:scale(.99)}
+  .module-card.locked{opacity:.62;cursor:default}
+  .module-card .num{flex:0 0 auto;width:44px;height:44px;border-radius:12px;background:var(--accent-soft);
+    color:var(--accent-deep);font-weight:800;font-size:1.2rem;display:flex;align-items:center;justify-content:center}
+  .module-card.done .num{background:var(--ok);color:#fff}
+  .module-card .body{flex:1}
+  .module-card .body h3{margin:0 0 3px;font-size:1.02rem}
+  .module-card .body p{margin:0;font-size:.82rem;color:var(--ink-soft)}
+  .module-card .status{font-size:.74rem;font-weight:700;margin-top:6px;display:inline-block}
+  .module-card .status.s-open{color:var(--accent-deep)}
+  .module-card .status.s-lock{color:var(--ink-soft)}
+  .module-card .status.s-done{color:var(--ok)}
+  .progress-line{height:7px;background:#eee;border-radius:99px;overflow:hidden;margin-top:8px}
+  .progress-line > i{display:block;height:100%;background:var(--accent);width:0}
+  /* Aufgaben */
+  .task-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+  .task-head .mod{font-weight:800;color:var(--accent-deep);font-size:.92rem}
+  .task-head .count{font-size:.82rem;color:var(--ink-soft)}
+  .bar{height:9px;background:#eee;border-radius:99px;overflow:hidden;margin-bottom:18px}
+  .bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-deep));width:0;transition:width .35s}
+  .card{background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--shadow)}
+  .readbox{background:var(--accent-soft);border-radius:14px;padding:14px 16px;margin-bottom:14px;font-size:.95rem}
+  .readbox .rt{font-weight:800;color:var(--accent-deep);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+  .prompt{font-size:1.08rem;font-weight:700;margin:0 0 16px}
+  .opts{display:flex;flex-direction:column;gap:10px}
+  .opt{display:block;width:100%;text-align:left;background:#fff;border:2px solid var(--line);border-radius:13px;
+    padding:13px 15px;font-size:1rem;cursor:pointer;transition:.12s;color:var(--ink)}
+  .opt:active{transform:scale(.99)}
+  .opt.sel{border-color:var(--accent)}
+  .opt.correct{border-color:var(--ok);background:var(--ok-bg)}
+  .opt.wrong{border-color:var(--bad);background:var(--bad-bg)}
+  .opt:disabled{cursor:default}
+  /* pair */
+  .pair-grid{display:flex;flex-direction:column;gap:10px}
+  .pair-row{display:flex;gap:8px;align-items:center}
+  .pair-l{flex:0 0 42%;background:var(--accent-soft);border-radius:11px;padding:11px 12px;font-weight:600;font-size:.94rem}
+  .pair-r-opts{flex:1;display:flex;flex-direction:column;gap:6px}
+  .pair-r{background:#fff;border:2px solid var(--line);border-radius:10px;padding:9px 11px;font-size:.9rem;cursor:pointer}
+  .pair-r.sel{border-color:var(--accent)}
+  .pair-r.correct{border-color:var(--ok);background:var(--ok-bg)}
+  .pair-r.wrong{border-color:var(--bad);background:var(--bad-bg)}
+  .pair-r:disabled{cursor:default;opacity:.5}
+  .pair-r.matched{opacity:.45;border-style:dashed}
+  /* scramble + order */
+  .tokens{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;min-height:46px;
+    border:2px dashed var(--line);border-radius:13px;padding:11px;background:#fffdf8}
+  .tokens.empty::before{content:"Tippe unten die Wörter in der richtigen Reihenfolge an …";color:var(--ink-soft);font-size:.85rem}
+  .bank{display:flex;flex-wrap:wrap;gap:8px}
+  .tok{background:#fff;border:2px solid var(--line);border-radius:10px;padding:9px 13px;font-size:.96rem;cursor:pointer;transition:.1s}
+  .tok:active{transform:scale(.96)}
+  .tok.used{opacity:.32;pointer-events:none}
+  .chip{background:var(--accent-soft);border:2px solid var(--accent);border-radius:10px;padding:9px 13px;font-size:.96rem;cursor:pointer}
+  .order-list{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+  .order-item{display:flex;align-items:center;gap:10px;background:#fff;border:2px solid var(--line);
+    border-radius:12px;padding:11px 13px;font-size:.95rem}
+  .order-item .ord-num{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--accent-soft);
+    color:var(--accent-deep);font-weight:800;font-size:.85rem;display:flex;align-items:center;justify-content:center}
+  .order-item .ord-txt{flex:1}
+  .order-item .ord-btns{display:flex;flex-direction:column;gap:3px}
+  .order-item .ord-btns button{border:none;background:var(--accent-soft);color:var(--accent-deep);
+    width:30px;height:20px;border-radius:6px;font-size:.7rem;cursor:pointer;line-height:1}
+  .order-item .ord-btns button:disabled{opacity:.3;cursor:default}
+  .feedback{margin-top:15px;padding:13px 15px;border-radius:12px;font-size:.93rem;display:none}
+  .feedback.show{display:block}
+  .feedback.ok{background:var(--ok-bg);color:#256b34}
+  .feedback.bad{background:var(--bad-bg);color:#922}
+  .feedback b{display:block;margin-bottom:3px}
+  .actions{margin-top:16px;display:flex;gap:10px}
+  .btn{flex:1;border:none;border-radius:13px;padding:14px;font-size:1rem;font-weight:800;cursor:pointer;transition:.12s}
+  .btn:active{transform:scale(.98)}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:disabled{background:#e9d4b6;cursor:default}
+  .btn-ghost{background:#fff;border:2px solid var(--line);color:var(--accent-deep)}
+  /* module end */
+  .endscreen{text-align:center;padding:10px 4px}
+  .endscreen .big{font-size:3rem;margin:6px 0}
+  .endscreen h2{margin:.1em 0}
+  .pw-reward{background:var(--accent);color:#fff;border-radius:16px;padding:18px;margin:18px 0;cursor:pointer;box-shadow:var(--shadow)}
+  .pw-reward .lab{font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;opacity:.9}
+  .pw-reward .code{font-size:1.5rem;font-weight:800;letter-spacing:.04em;margin-top:5px;font-family:ui-monospace,monospace}
+  .pw-reward .hint{font-size:.74rem;opacity:.85;margin-top:6px}
+  .namebox{margin:16px 0}
+  .namebox input{width:100%;padding:13px 15px;border:2px solid var(--line);border-radius:12px;font-size:1rem;text-align:center}
+  /* unlock screen */
+  .lockscreen{text-align:center;padding:24px 6px}
+  .lockscreen .lock-ic{font-size:2.6rem}
+  .lockscreen input{width:100%;padding:14px;border:2px solid var(--line);border-radius:12px;font-size:1.05rem;
+    text-align:center;margin:14px 0;font-family:ui-monospace,monospace;letter-spacing:.03em}
+  .lockscreen .err{color:var(--bad);font-size:.85rem;min-height:18px}
+  .cert-wrap{margin:14px 0}
+  canvas{max-width:100%;border-radius:12px;box-shadow:var(--shadow)}
+  .mini{font-size:.78rem;color:var(--ink-soft);text-align:center;margin-top:18px}
+  .hidden{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="logo">A</div>
+    <div>
+      <h1>Linie 1 <i>Beruf</i> B1/B2 — Lektion 1</h1>
+      <p>Eine neue Stelle · Lern Deutsch mit Arash</p>
+    </div>
+  </header>
+
+  <div class="backbar hidden" id="backbar">
+    <button class="backbtn" id="backbtn">← Zurück zur Übersicht</button>
+  </div>
+
+  <div id="screen"></div>
+
+  <p class="mini">Lern Deutsch mit Arash · arashguitoo.github.io</p>
+</div>
+
+<!-- MODULE DATA INJECTED HERE -->
+<script>
+const MODUL_1 = {
+  id: 1,
+  title: "Modul 1 — Sich vorstellen & Profil",
+  subtitle: "Steckbrief, Begrüßungen, Charaktereigenschaften",
+  passwordToUnlock: null,
+  passwordReward: "M2-ARBEITSPLATZ-2026",
+  tasks: [
+    { type:"reading",
+      title:"Steckbrief: Yasmin Khoury",
+      text:"Yasmin Khoury, geboren am 14.3.1992, wohnt in Bremen. Sie ist verheiratet und hat einen Sohn (5). Yasmin arbeitet seit Kurzem bei einer Eventagentur, die Messeauftritte für kleine Firmen organisiert. Ihre Hobbys sind Klettern, Kochen und Reisen. Besonders interessiert sie sich für gesunde Ernährung und fremde Kulturen. An ihrer neuen Stelle gefällt ihr der Kontakt zu vielen Menschen.",
+      followsReading:[
+        { type:"mc", prompt:"Wo wohnt Yasmin?", options:["in Bremen","in München","in Salzburg","in Wien"], correct:0, exp:"„… wohnt in Bremen.“" },
+        { type:"mc", prompt:"Wie viele Kinder hat sie?", options:["ein Kind","zwei Kinder","keine Kinder","drei Kinder"], correct:0, exp:"„… hat einen Sohn (5).“" },
+        { type:"mc", prompt:"Was ist KEIN Hobby von Yasmin?", options:["Schwimmen","Klettern","Kochen","Reisen"], correct:0, exp:"Genannt werden Klettern, Kochen und Reisen — Schwimmen nicht." },
+        { type:"mc", prompt:"Was gefällt ihr an der neuen Stelle?", options:["der Kontakt zu vielen Menschen","das hohe Gehalt","die kurzen Arbeitswege","die ruhige Atmosphäre"], correct:0, exp:"„… gefällt ihr der Kontakt zu vielen Menschen.“" },
+      ]},
+    { type:"mc", prompt:"Welche Frage passt zu der Antwort: „Sie ist gern in den Bergen.“?",
+      options:["Was macht sie gern?","Wo wohnt sie?","Wann ist sie geboren?","Wie heißt sie?"], correct:0,
+      exp:"Die Antwort nennt eine Tätigkeit/Vorliebe → Frage mit „Was macht … gern?“." },
+    { type:"mc", prompt:"„geboren am“ — welche Angabe gehört dazu?",
+      options:["9.2.1990","München","verheiratet","Wandern"], correct:0,
+      exp:"„geboren am“ verlangt ein Datum." },
+    { type:"mc", prompt:"Welches Wort beschreibt eine Charaktereigenschaft?",
+      options:["zuverlässig","Bremen","Montag","Tochter"], correct:0,
+      exp:"zuverlässig ist eine Eigenschaft; die anderen sind Ort, Tag, Person." },
+    { type:"mc", prompt:"Was bedeutet „Steckbrief“?",
+      options:["kurze Übersicht über eine Person","ein langer Brief","eine Bewerbung","ein Vertrag"], correct:0,
+      exp:"Ein Steckbrief fasst die wichtigsten Daten einer Person kurz zusammen." },
+    { type:"gap", prompt:"Ich ____ mich für gesunde Ernährung.",
+      options:["interessiere","interessiert","interessieren","interessierst"], correct:0,
+      exp:"ich-Form: „ich interessiere mich“." },
+    { type:"gap", prompt:"Sie ist verheiratet und ____ einen Sohn.",
+      options:["hat","habt","haben","hast"], correct:0,
+      exp:"sie (3. Person Singular): „sie hat“." },
+    { type:"gap", prompt:"Mein Kollege ____ in Hamburg.",
+      options:["wohnt","wohne","wohnen","wohnst"], correct:0,
+      exp:"er/sie (3. Person Singular): „wohnt“." },
+    { type:"pair", prompt:"Verbinde Steckbrief-Stichpunkt und Beispiel.",
+      items:[
+        {l:"geboren am", r:"14.3.1992"},
+        {l:"wohnt in", r:"Bremen"},
+        {l:"arbeitet bei", r:"einer Eventagentur"},
+        {l:"Hobbys", r:"Klettern, Kochen, Reisen"},
+      ]},
+    { type:"pair", prompt:"Verbinde Eigenschaft und Bedeutung.",
+      items:[
+        {l:"neugierig", r:"will viel Neues wissen"},
+        {l:"geduldig", r:"kann gut warten"},
+        {l:"ordentlich", r:"hält alles sauber und sortiert"},
+        {l:"hilfsbereit", r:"hilft anderen gern"},
+      ]},
+    { type:"mc", prompt:"„Herzliche Grüße“ steht meistens …",
+      options:["am Ende einer Nachricht","am Anfang einer Nachricht","in der Mitte","im Betreff"], correct:0,
+      exp:"Grußformeln wie „Herzliche Grüße“ stehen am Schluss." },
+    { type:"mc", prompt:"Welche Anrede ist formell?",
+      options:["Sehr geehrte Frau Berger,","Hey Anna!","Hallo Schatz,","Na, du?"], correct:0,
+      exp:"„Sehr geehrte/r …“ ist die formelle Anrede." },
+    { type:"order", prompt:"Bring die Teile einer kurzen Nachricht in die richtige Reihenfolge.",
+      items:["Liebe Frau Khoury,","als neue Kollegin begrüßen wir Sie herzlich.","Bitte kommen Sie morgen um 9 Uhr in mein Büro.","Herzliche Grüße","Ihr Team"] },
+    { type:"order", prompt:"Ordne die Begrüßung beim ersten Arbeitstag.",
+      items:["Guten Morgen,","ich bin neu im Team.","Ich freue mich auf die Zusammenarbeit.","Können Sie mir kurz alles zeigen?"] },
+    { type:"scramble", prompt:"Bilde einen richtigen Satz.",
+      words:["Ich","arbeite","seit","September","bei","einer","Agentur","."],
+      answer:"Ich arbeite seit September bei einer Agentur ." },
+    { type:"scramble", prompt:"Bilde einen richtigen Satz.",
+      words:["Meine","Kollegen","sind","alle","sehr","nett","."],
+      answer:"Meine Kollegen sind alle sehr nett ." },
+    { type:"scramble", prompt:"Bilde einen richtigen Satz.",
+      words:["In","meiner","Freizeit","gehe","ich","gern","klettern","."],
+      answer:"In meiner Freizeit gehe ich gern klettern ." },
+    { type:"mc", prompt:"„verheiratet“ ist das Gegenteil von …",
+      options:["ledig","müde","jung","fleißig"], correct:0,
+      exp:"verheiratet ↔ ledig (Familienstand)." },
+    { type:"mc", prompt:"Welches Wort passt: „Sie ist neu und kennt noch ____ Kollegen.“",
+      options:["wenige","viele","alle","keine"], correct:0,
+      exp:"Wer neu ist, kennt anfangs nur wenige Kollegen." },
+    { type:"gap", prompt:"Darf ich mich kurz ____?",
+      options:["vorstellen","vorstelle","vorgestellt","vorstellst"], correct:0,
+      exp:"Infinitiv nach „darf ich“: „mich vorstellen“." },
+    { type:"gap", prompt:"Woher ____ Sie?",
+      options:["kommen","kommt","komme","kommst"], correct:0,
+      exp:"Höflichkeitsform „Sie“: „kommen Sie“." },
+    { type:"pair", prompt:"Verbinde Frage und Antwort.",
+      items:[
+        {l:"Wie heißen Sie?", r:"Mein Name ist Khoury."},
+        {l:"Woher kommen Sie?", r:"Aus dem Libanon."},
+        {l:"Was sind Ihre Hobbys?", r:"Klettern und Kochen."},
+        {l:"Wo arbeiten Sie?", r:"Bei einer Eventagentur."},
+      ]},
+    { type:"mc", prompt:"Was möchte man mit einem Profil-Blatt im Kurs sammeln?",
+      options:["Informationen über andere Teilnehmer","Hausaufgaben","Noten","Termine"], correct:0,
+      exp:"Profil-Blätter dienen dazu, sich gegenseitig kennenzulernen." },
+    { type:"mc", prompt:"„Lieblingsfilm“ ist ein …",
+      options:["zusammengesetztes Nomen","Verb","Adjektiv","Artikel"], correct:0,
+      exp:"Lieblings + Film = ein Kompositum (zusammengesetztes Nomen)." },
+    { type:"mc", prompt:"Welcher Satz stellt eine Person vor?",
+      options:["Das ist Zahra. Sie kommt aus dem Iran.","Bitte schließen Sie die Tür.","Es regnet heute.","Der Bus kommt um acht."], correct:0,
+      exp:"Eine Vorstellung nennt Name und Herkunft einer Person." },
+    { type:"scramble", prompt:"Bilde einen richtigen Satz.",
+      words:["Ich","möchte","Ihnen","meine","neue","Kollegin","vorstellen","."],
+      answer:"Ich möchte Ihnen meine neue Kollegin vorstellen ." },
+    { type:"gap", prompt:"Sie freut sich ____ ihre Familie.",
+      options:["auf","an","über","für"], correct:0,
+      exp:"sich freuen auf + Akkusativ (etwas Zukünftiges)." },
+    { type:"gap", prompt:"Ich freue mich ____ das nette Geschenk.",
+      options:["über","auf","an","für"], correct:0,
+      exp:"sich freuen über + Akkusativ (etwas Gegenwärtiges/Vergangenes)." },
+    { type:"mc", prompt:"Welche Angabe gehört NICHT in einen Steckbrief?",
+      options:["die Lieblingsfarbe des Chefs","der Wohnort","das Geburtsdatum","die Hobbys"], correct:0,
+      exp:"Ein Steckbrief beschreibt die eigene Person, nicht die Vorlieben des Chefs." },
+  ]
+};
+
+const MODUL_2 = {
+  id: 2,
+  title: "Modul 2 — Der neue Arbeitsplatz",
+  subtitle: "Temporale Konnektoren (als, bevor, bis, seitdem, während, wenn) & Verbposition",
+  passwordToUnlock: "M2-ARBEITSPLATZ-2026",
+  passwordReward: "M3-HOBBYS-2026",
+  tasks: [
+    { type:"reading",
+      title:"E-Mail: Der erste Tag",
+      text:"Lieber Daniel, seit März arbeite ich in einem Architekturbüro. Als ich am ersten Tag ankam, war ich sehr nervös. Aber die Kollegen sind freundlich, und immer wenn ich eine Frage habe, hilft mir jemand. Seitdem ich hier bin, vergeht die Zeit schnell. Während ich arbeite, merke ich gar nicht, wie spät es wird. Bevor du dich bewirbst, ruf mich an — ich helfe dir gern! Liebe Grüße, Mira",
+      followsReading:[
+        { type:"mc", prompt:"Wie fühlte sich Mira am ersten Tag?", options:["sehr nervös","ganz ruhig","gelangweilt","wütend"], correct:0, exp:"„Als ich am ersten Tag ankam, war ich sehr nervös.“" },
+        { type:"mc", prompt:"Was passiert, wenn Mira eine Frage hat?", options:["jemand hilft ihr","sie wartet allein","sie geht nach Hause","niemand antwortet"], correct:0, exp:"„… immer wenn ich eine Frage habe, hilft mir jemand.“" },
+        { type:"mc", prompt:"Seit wann arbeitet Mira dort?", options:["seit März","seit Januar","seit September","seit einem Jahr"], correct:0, exp:"„… seit März arbeite ich …“." },
+        { type:"mc", prompt:"Was soll Daniel tun, bevor er sich bewirbt?", options:["Mira anrufen","ein Foto schicken","umziehen","kündigen"], correct:0, exp:"„Bevor du dich bewirbst, ruf mich an …“." },
+      ]},
+    { type:"gap", prompt:"Gabriela hat viel weniger Zeit, ____ sie die neue Stelle hat.",
+      options:["seitdem","bevor","während","als"], correct:0,
+      exp:"seitdem = ab dem Zeitpunkt eines Ereignisses bis jetzt." },
+    { type:"gap", prompt:"Sie war aufgeregt, ____ sie ihre neue Arbeit begonnen hat.",
+      options:["als","seitdem","während","bis"], correct:0,
+      exp:"als = einmaliges Ereignis in der Vergangenheit." },
+    { type:"gap", prompt:"Alle Kollegen helfen ihr, ____ sie ein Problem hat.",
+      options:["wenn","als","bevor","bis"], correct:0,
+      exp:"wenn = wiederholtes Ereignis (immer wenn …)." },
+    { type:"gap", prompt:"____ sie sich an den lockeren Ton gewöhnt hat, braucht sie etwas Zeit.",
+      options:["Bis","Seitdem","Während","Als"], correct:0,
+      exp:"bis = bis zu einem zukünftigen Endpunkt." },
+    { type:"gap", prompt:"____ sie arbeitet, merkt sie ihre Müdigkeit nicht.",
+      options:["Während","Bevor","Bis","Als"], correct:0,
+      exp:"während = gleichzeitig ablaufende Handlungen." },
+    { type:"gap", prompt:"____ Nikos seine Bewerbung abschickt, spricht Gabriela mit ihm.",
+      options:["Bevor","Seitdem","Während","Bis"], correct:0,
+      exp:"bevor = das eine geschieht vor dem anderen." },
+    { type:"mc", prompt:"Welcher Konnektor steht für ein einmaliges Ereignis in der Vergangenheit?",
+      options:["als","wenn","seitdem","während"], correct:0,
+      exp:"als = einmalig, Vergangenheit. wenn = wiederholt." },
+    { type:"mc", prompt:"„Immer wenn es regnet, …“ — was drückt „wenn“ hier aus?",
+      options:["eine Wiederholung","ein einmaliges Ereignis","einen Endpunkt","eine Gleichzeitigkeit"], correct:0,
+      exp:"„immer wenn“ = Wiederholung." },
+    { type:"mc", prompt:"In welchem Satz steht das Verb am Ende?",
+      options:["…, weil sie viel arbeitet.","Sie arbeitet viel.","Arbeitet sie viel?","Sie arbeitet heute viel."], correct:0,
+      exp:"Im Nebensatz (mit weil) steht das konjugierte Verb am Satzende." },
+    { type:"mc", prompt:"Hauptsatz: Wo steht das konjugierte Verb?",
+      options:["an Position 2","am Anfang","am Ende","an Position 3"], correct:0,
+      exp:"Im Aussage-Hauptsatz steht das Verb an Position 2." },
+    { type:"scramble", prompt:"Stell den Nebensatz richtig: bilde den Satz.",
+      words:["Seitdem","sie","die","neue","Stelle","hat",",","hat","Gabriela","weniger","Zeit","."],
+      answer:"Seitdem sie die neue Stelle hat , hat Gabriela weniger Zeit ." },
+    { type:"scramble", prompt:"Bilde einen Satz mit Nebensatz am Anfang.",
+      words:["Wenn","ich","nach","Hause","komme",",","bin","ich","total","müde","."],
+      answer:"Wenn ich nach Hause komme , bin ich total müde ." },
+    { type:"scramble", prompt:"Bilde einen Satz mit „während“.",
+      words:["Während","ich","in","der","Firma","bin",",","vergeht","die","Zeit","schnell","."],
+      answer:"Während ich in der Firma bin , vergeht die Zeit schnell ." },
+    { type:"order", prompt:"Ordne die Sätze zu einer kleinen Geschichte über den ersten Tag.",
+      items:["Am ersten Tag war ich sehr nervös.","Dann hat mich die Chefin allen vorgestellt.","Die Kollegen waren von Anfang an freundlich.","Inzwischen fühle ich mich richtig wohl."] },
+    { type:"order", prompt:"Bring die Teile einer formellen E-Mail an eine Behörde in die richtige Reihenfolge.",
+      items:["Sehr geehrte Damen und Herren,","ich habe Ihren Brief vom 3. Mai erhalten.","Leider kann ich den Termin nicht wahrnehmen.","Könnten Sie mir einen neuen Termin nennen?","Mit freundlichen Grüßen","Mira Hadad"] },
+    { type:"mc", prompt:"„Verfliegt die Zeit“ bedeutet …",
+      options:["die Zeit vergeht sehr schnell","man hat keine Zeit","die Zeit steht still","man kommt zu spät"], correct:0,
+      exp:"„Die Zeit verfliegt“ = sie vergeht sehr schnell." },
+    { type:"mc", prompt:"„Ich bin total erledigt.“ heißt …",
+      options:["Ich bin sehr müde.","Ich bin fertig mit der Arbeit.","Ich bin glücklich.","Ich habe Hunger."], correct:0,
+      exp:"„erledigt sein“ (umgangssprachlich) = sehr müde/erschöpft." },
+    { type:"gap", prompt:"Die Chefin hat mir gleich das ____ angeboten.",
+      options:["Du","Sie","Ihr","Wir"], correct:0,
+      exp:"„das Du anbieten“ = vorschlagen, sich zu duzen." },
+    { type:"gap", prompt:"Ron ____ sich um den Haushalt.",
+      options:["kümmert","kümmern","kümmere","kümmerst"], correct:0,
+      exp:"er (3. Person): „kümmert sich“." },
+    { type:"pair", prompt:"Verbinde Konnektor und Bedeutung.",
+      items:[
+        {l:"als", r:"einmalig in der Vergangenheit"},
+        {l:"wenn", r:"wiederholt / immer wenn"},
+        {l:"seitdem", r:"ab einem Zeitpunkt bis jetzt"},
+        {l:"bis", r:"bis zu einem Endpunkt"},
+      ]},
+    { type:"pair", prompt:"Verbinde Satzanfang und Fortsetzung.",
+      items:[
+        {l:"Als ich ankam,", r:"war ich nervös."},
+        {l:"Während ich arbeite,", r:"vergeht die Zeit schnell."},
+        {l:"Bevor ich gehe,", r:"schreibe ich die E-Mail."},
+        {l:"Seitdem ich hier bin,", r:"fühle ich mich wohl."},
+      ]},
+    { type:"mc", prompt:"„Die Einarbeitung ist spannend.“ — Was ist die Einarbeitung?",
+      options:["die erste Lernphase im neuen Job","die Mittagspause","das Gehalt","der Arbeitsweg"], correct:0,
+      exp:"Einarbeitung = Phase, in der man neue Aufgaben kennenlernt." },
+    { type:"gap", prompt:"Ich gewöhne mich langsam ____ den neuen Ton.",
+      options:["an","auf","über","für"], correct:0,
+      exp:"sich gewöhnen an + Akkusativ." },
+    { type:"mc", prompt:"Welcher Satz ist korrekt?",
+      options:["Bevor ich gehe, räume ich auf.","Bevor ich auf räume gehe ich.","Ich gehe, bevor auf ich räume.","Bevor gehe ich, räume auf ich."], correct:0,
+      exp:"Nebensatz: Verb am Ende; Hauptsatz danach: Verb an Position 2." },
+    { type:"scramble", prompt:"Bilde einen richtigen Satz.",
+      words:["Bis","ich","mich","daran","gewöhnt","habe",",","dauert","es","etwas","."],
+      answer:"Bis ich mich daran gewöhnt habe , dauert es etwas ." },
+    { type:"mc", prompt:"„Es bleibt einiges zu tun.“ bedeutet …",
+      options:["Es gibt noch viel Arbeit.","Alles ist fertig.","Nichts ist zu tun.","Man hat Pause."], correct:0,
+      exp:"„einiges zu tun“ = es gibt noch viel zu erledigen." },
+    { type:"gap", prompt:"____ ich klein war, bin ich oft in die Berge gefahren.",
+      options:["Als","Wenn","Seitdem","Bis"], correct:0,
+      exp:"einmalige/dauerhafte Vergangenheit der Kindheit → als." },
+    { type:"order", prompt:"Ordne die Schritte am neuen Arbeitsplatz zeitlich.",
+      items:["sich bewerben","ein Vorstellungsgespräch führen","den Vertrag unterschreiben","am ersten Tag anfangen"] },
+  ]
+};
+
+const MODUL_3 = {
+  id: 3,
+  title: "Modul 3 — Hobbys & Verben mit Ergänzungen",
+  subtitle: "Verben mit Dativ/Akkusativ/Präposition, Wortschatz Freizeit",
+  passwordToUnlock: "M3-HOBBYS-2026",
+  passwordReward: "M4-LEBENSLAUF-2026",
+  tasks: [
+    { type:"reading",
+      title:"Interview: Leidenschaft Fotografie",
+      text:"Tarek Said wandert und fotografiert für sein Leben gern. Wandern ist für ihn Entspannung: die Bewegung in der Natur, Tiere beobachten und Pflanzen ansehen. Seine Kamera hat er auf jeder Wanderung dabei. Schon als Kind hat ihm seine Oma eine Kamera geschenkt. Inzwischen bearbeitet er seine Fotos am Computer. Fotografieren ist auch für seine Arbeit wichtig, denn er arbeitet in der Pressestelle einer Stadt.",
+      followsReading:[
+        { type:"mc", prompt:"Was bedeutet Wandern für Tarek?", options:["Entspannung","Stress","Arbeit","Langeweile"], correct:0, exp:"„Wandern ist für ihn Entspannung …“." },
+        { type:"mc", prompt:"Wer hat ihm die erste Kamera geschenkt?", options:["seine Oma","sein Chef","sein Bruder","seine Frau"], correct:0, exp:"„… hat ihm seine Oma eine Kamera geschenkt.“" },
+        { type:"mc", prompt:"Was macht Tarek mit seinen Fotos?", options:["er bearbeitet sie am Computer","er druckt sie nicht","er verkauft sie","er löscht sie"], correct:0, exp:"„Inzwischen bearbeitet er seine Fotos am Computer.“" },
+        { type:"mc", prompt:"Wo arbeitet Tarek?", options:["in der Pressestelle einer Stadt","in einem Fotostudio","in einer Schule","in einem Geschäft"], correct:0, exp:"„… er arbeitet in der Pressestelle einer Stadt.“" },
+      ]},
+    { type:"mc", prompt:"„Ich fotografiere die Natur.“ — Welche Ergänzung ist „die Natur“?",
+      options:["Akkusativ","Dativ","Nominativ","Präposition"], correct:0,
+      exp:"„die Natur“ ist das Akkusativobjekt (Wen/Was?)." },
+    { type:"mc", prompt:"„Meine Oma hat mir eine Kamera geschenkt.“ — Was ist „mir“?",
+      options:["Dativ","Akkusativ","Nominativ","Genitiv"], correct:0,
+      exp:"„mir“ = Dativ (Wem?), „eine Kamera“ = Akkusativ (Was?)." },
+    { type:"gap", prompt:"Ich interessiere mich ____ Fotografie.",
+      options:["für","auf","an","über"], correct:0,
+      exp:"sich interessieren für + Akkusativ." },
+    { type:"gap", prompt:"Er beschäftigt sich gern ____ Pflanzen.",
+      options:["mit","für","auf","an"], correct:0,
+      exp:"sich beschäftigen mit + Dativ." },
+    { type:"gap", prompt:"Wir begeistern uns ____ Bergsport.",
+      options:["für","mit","an","über"], correct:0,
+      exp:"sich begeistern für + Akkusativ." },
+    { type:"gap", prompt:"Das Fotografieren gefällt ____ sehr.",
+      options:["mir","mich","ich","meiner"], correct:0,
+      exp:"gefallen + Dativ: „gefällt mir“." },
+    { type:"pair", prompt:"Verbinde Verb und passende Ergänzung.",
+      items:[
+        {l:"sich interessieren", r:"für + Akkusativ"},
+        {l:"sich beschäftigen", r:"mit + Dativ"},
+        {l:"gefallen", r:"Dativ"},
+        {l:"fotografieren", r:"Akkusativ"},
+      ]},
+    { type:"pair", prompt:"Verbinde Verb und Beispiel.",
+      items:[
+        {l:"empfehlen", r:"Ich empfehle dir das Buch."},
+        {l:"schenken", r:"Sie schenkt ihm eine Kamera."},
+        {l:"zeigen", r:"Er zeigt mir sein Fahrrad."},
+        {l:"wünschen", r:"Ich wünsche mir einen freien Tag."},
+      ]},
+    { type:"order", prompt:"Ordne die Satzteile: Subjekt – Verb – Dativ – Akkusativ.",
+      items:["Marco","zeigt","mir","sein Fahrrad."] },
+    { type:"order", prompt:"Bring den Satz in die richtige Reihenfolge.",
+      items:["Meine Oma","hat","mir","eine Kamera","geschenkt."] },
+    { type:"scramble", prompt:"Bilde einen richtigen Satz.",
+      words:["Ich","interessiere","mich","sehr","für","Fotografie","."],
+      answer:"Ich interessiere mich sehr für Fotografie ." },
+    { type:"scramble", prompt:"Bilde einen richtigen Satz.",
+      words:["Das","Wandern","macht","mir","viel","Spaß","."],
+      answer:"Das Wandern macht mir viel Spaß ." },
+    { type:"scramble", prompt:"Bilde einen richtigen Satz.",
+      words:["Er","hat","an","einem","Fotokurs","teilgenommen","."],
+      answer:"Er hat an einem Fotokurs teilgenommen ." },
+    { type:"gap", prompt:"Ich habe ____ einem Fotokurs teilgenommen.",
+      options:["an","auf","in","für"], correct:0,
+      exp:"teilnehmen an + Dativ." },
+    { type:"mc", prompt:"„abschalten“ bedeutet hier …",
+      options:["nicht mehr an den Alltag denken","das Licht ausmachen","das Handy ausschalten","aufhören zu arbeiten"], correct:0,
+      exp:"„abschalten“ = den Kopf frei bekommen, sich entspannen." },
+    { type:"mc", prompt:"„die Leidenschaft“ ist …",
+      options:["eine sehr starke Begeisterung","ein kleines Hobby","eine Arbeit","ein Sport"], correct:0,
+      exp:"Leidenschaft = sehr starke, tiefe Begeisterung." },
+    { type:"mc", prompt:"„etwas von jemandem übernehmen“ bedeutet …",
+      options:["etwas von einer anderen Person bekommen/weiterführen","etwas kaufen","etwas verschenken","etwas verlieren"], correct:0,
+      exp:"übernehmen = etwas weiterführen oder bekommen, das ein anderer hatte." },
+    { type:"mc", prompt:"Welches Verb steht mit Akkusativ?",
+      options:["beobachten","gefallen","helfen","danken"], correct:0,
+      exp:"beobachten + Akkusativ; gefallen/helfen/danken + Dativ." },
+    { type:"mc", prompt:"Welches Verb steht mit Dativ?",
+      options:["helfen","sehen","kaufen","lesen"], correct:0,
+      exp:"helfen + Dativ; die anderen mit Akkusativ." },
+    { type:"gap", prompt:"Ich beschäftige mich gern ____ alten Kameras.",
+      options:["mit","für","an","auf"], correct:0,
+      exp:"sich beschäftigen mit + Dativ." },
+    { type:"gap", prompt:"Kannst du ____ ein gutes Objektiv empfehlen?",
+      options:["mir","mich","ich","meiner"], correct:0,
+      exp:"empfehlen + Dativ (Person): „mir“." },
+    { type:"pair", prompt:"Verbinde Freizeit-Wort und Bedeutung.",
+      items:[
+        {l:"die Begeisterung", r:"große Freude an etwas"},
+        {l:"beobachten", r:"genau ansehen"},
+        {l:"abschalten", r:"sich entspannen"},
+        {l:"die Bewegung", r:"körperliche Aktivität"},
+      ]},
+    { type:"scramble", prompt:"Bilde einen richtigen Satz.",
+      words:["Marco","zeigt","mir","sein","neues","Fahrrad","."],
+      answer:"Marco zeigt mir sein neues Fahrrad ." },
+    { type:"mc", prompt:"„Ich beschäftige mich gern mit Musik.“ — Was ist „mit Musik“?",
+      options:["Präpositionalergänzung","Akkusativobjekt","Dativobjekt ohne Präposition","Subjekt"], correct:0,
+      exp:"„mit Musik“ ist eine feste Präpositionalergänzung des Verbs." },
+    { type:"order", prompt:"Ordne den Forumsbeitrag über ein Hobby.",
+      items:["Mein Hobby ist Fotografieren.","Angefangen habe ich als Kind.","Heute mache ich es jedes Wochenende.","Mir gefällt besonders die Ruhe in der Natur."] },
+    { type:"gap", prompt:"Viele Menschen begeistern sich ____ das Klettern.",
+      options:["für","mit","an","auf"], correct:0,
+      exp:"sich begeistern für + Akkusativ." },
+    { type:"mc", prompt:"Welcher Satz hat Dativ UND Akkusativ?",
+      options:["Er schenkt mir ein Buch.","Ich lese ein Buch.","Sie schläft.","Wir wandern gern."], correct:0,
+      exp:"„mir“ (Dativ) + „ein Buch“ (Akkusativ)." },
+  ]
+};
+
+const MODUL_4 = {
+  id: 4,
+  title: "Modul 4 — Beruflicher Werdegang & Lebenslauf",
+  subtitle: "Reflexivpronomen (Akkusativ/Dativ), Lebenslauf, Sprachkompetenzen",
+  passwordToUnlock: "M4-LEBENSLAUF-2026",
+  passwordReward: null,
+  tasks: [
+    { type:"reading",
+      title:"Lebensweg: Lena Brandt",
+      text:"Von 2012 bis 2017 hat Lena als Mediengestalterin in Wien gearbeitet. Danach ist sie nach Deutschland gezogen und arbeitet seitdem für eine Werbeagentur. Sie engagiert sich ehrenamtlich in einem Verein für Leseförderung. Schon als Kind hat sie sich für Sprachen interessiert. Englisch versteht und spricht sie sehr gut (C1), Französisch kann sie gut lesen (B1). Zurzeit bewirbt sie sich um eine Stelle als Teamleiterin, weil sie eine neue Herausforderung sucht.",
+      followsReading:[
+        { type:"mc", prompt:"Was hat Lena von 2012 bis 2017 gemacht?", options:["als Mediengestalterin in Wien gearbeitet","studiert","ein Praktikum gemacht","eine Pause gemacht"], correct:0, exp:"„Von 2012 bis 2017 hat Lena als Mediengestalterin … gearbeitet.“" },
+        { type:"mc", prompt:"Wo engagiert sie sich ehrenamtlich?", options:["in einem Verein für Leseförderung","in einem Sportverein","in einer Schule","in einem Krankenhaus"], correct:0, exp:"„… engagiert sich ehrenamtlich in einem Verein für Leseförderung.“" },
+        { type:"mc", prompt:"Wie gut ist Lenas Englisch?", options:["sehr gut (C1)","Grundkenntnisse","Muttersprache","A2"], correct:0, exp:"„Englisch versteht und spricht sie sehr gut (C1).“" },
+        { type:"mc", prompt:"Warum bewirbt sie sich um eine neue Stelle?", options:["sie sucht eine neue Herausforderung","sie verdient zu wenig","sie zieht um","sie ist arbeitslos"], correct:0, exp:"„… weil sie eine neue Herausforderung sucht.“" },
+      ]},
+    { type:"mc", prompt:"„Ich habe mich entschlossen, Mode zu studieren.“ — Welcher Fall ist „mich“?",
+      options:["Akkusativ","Dativ","Nominativ","Genitiv"], correct:0,
+      exp:"sich entschließen: Reflexivpronomen im Akkusativ." },
+    { type:"mc", prompt:"„Zurzeit sehe ich mir viele Stellenangebote an.“ — Welcher Fall ist „mir“?",
+      options:["Dativ","Akkusativ","Nominativ","Genitiv"], correct:0,
+      exp:"Es gibt schon ein Akkusativobjekt („Stellenangebote“), darum steht das Reflexivpronomen im Dativ." },
+    { type:"mc", prompt:"Wann steht das Reflexivpronomen im Dativ?",
+      options:["wenn es im Satz schon eine Akkusativergänzung gibt","immer","nie","nur in Fragen"], correct:0,
+      exp:"Regel: Reflexivpronomen im Dativ, wenn schon ein Akkusativobjekt vorhanden ist." },
+    { type:"gap", prompt:"Ich interessiere ____ für Autos.",
+      options:["mich","mir","mein","ich"], correct:0,
+      exp:"sich interessieren für: Akkusativ → „mich“." },
+    { type:"gap", prompt:"Ich wünsche ____ einen ruhigen Tag.",
+      options:["mir","mich","ich","meiner"], correct:0,
+      exp:"„einen Tag“ = Akkusativ vorhanden → Reflexivpronomen im Dativ: „mir“." },
+    { type:"gap", prompt:"Du interessierst ____ für Tiere.",
+      options:["dich","dir","du","deiner"], correct:0,
+      exp:"sich interessieren für: Akkusativ → „dich“." },
+    { type:"gap", prompt:"José interessiert ____ für Autos.",
+      options:["sich","ihm","ihn","er"], correct:0,
+      exp:"3. Person reflexiv: „sich“." },
+    { type:"gap", prompt:"Ihr interessiert ____ für Musik.",
+      options:["euch","euer","ihr","sich"], correct:0,
+      exp:"2. Person Plural reflexiv: „euch“." },
+    { type:"pair", prompt:"Verbinde Person und Reflexivpronomen (Akkusativ).",
+      items:[
+        {l:"ich", r:"mich"},
+        {l:"du", r:"dich"},
+        {l:"er/sie/es", r:"sich"},
+        {l:"wir", r:"uns"},
+      ]},
+    { type:"pair", prompt:"Verbinde reflexives Verb und Präposition.",
+      items:[
+        {l:"sich bewerben", r:"bei / um"},
+        {l:"sich konzentrieren", r:"auf"},
+        {l:"sich entscheiden", r:"für"},
+        {l:"sich bemühen", r:"um"},
+      ]},
+    { type:"scramble", prompt:"Bilde einen richtigen Satz.",
+      words:["Ich","habe","mich","schon","immer","für","Autos","interessiert","."],
+      answer:"Ich habe mich schon immer für Autos interessiert ." },
+    { type:"scramble", prompt:"Bilde einen richtigen Satz.",
+      words:["Die","Antwort","habe","ich","mir","lange","überlegt","."],
+      answer:"Die Antwort habe ich mir lange überlegt ." },
+    { type:"scramble", prompt:"Bilde einen richtigen Satz.",
+      words:["Ich","bewerbe","mich","um","eine","neue","Stelle","."],
+      answer:"Ich bewerbe mich um eine neue Stelle ." },
+    { type:"gap", prompt:"Ich konzentriere mich ____ meine Arbeit.",
+      options:["auf","an","für","mit"], correct:0,
+      exp:"sich konzentrieren auf + Akkusativ." },
+    { type:"gap", prompt:"Sie bewirbt sich ____ eine Stelle als Teamleiterin.",
+      options:["um","für","an","auf"], correct:0,
+      exp:"sich bewerben um + Akkusativ (Stelle)." },
+    { type:"gap", prompt:"Ich kenne mich gut ____ Computern aus.",
+      options:["mit","für","an","auf"], correct:0,
+      exp:"sich auskennen mit + Dativ." },
+    { type:"order", prompt:"Ordne die Lebenslauf-Überschriften in eine sinnvolle Reihenfolge.",
+      items:["Persönliche Daten","Schule und Ausbildung","Berufliche Laufbahn","Sprachkenntnisse","Hobbys"] },
+    { type:"order", prompt:"Bring die Stationen eines Lebenslaufs chronologisch.",
+      items:["Grundschule und Gymnasium","Studium an der Universität","Praktikum in einer Firma","feste Anstellung"] },
+    { type:"order", prompt:"Ordne die Teile einer Bewerbungs-Mail.",
+      items:["Sehr geehrte Frau Lentz,","mit großem Interesse habe ich Ihre Stellenanzeige gelesen.","Gern stelle ich mich Ihnen persönlich vor.","Über eine Einladung würde ich mich sehr freuen.","Mit freundlichen Grüßen"] },
+    { type:"mc", prompt:"Was gehört unter „Persönliche Daten“ im Lebenslauf?",
+      options:["Name, Geburtsdatum, Anschrift","Lieblingsfilm","Schulnoten","Urlaubspläne"], correct:0,
+      exp:"Persönliche Daten = Name, Geburtsdatum/-ort, Anschrift, Kontakt." },
+    { type:"mc", prompt:"„ehrenamtlich“ bedeutet …",
+      options:["ohne Bezahlung, freiwillig","mit hohem Gehalt","in Vollzeit","im Ausland"], correct:0,
+      exp:"ehrenamtlich = freiwillig und unbezahlt." },
+    { type:"mc", prompt:"„Ich engagiere mich für …“ — das Verb ist …",
+      options:["reflexiv","nicht reflexiv","ein Modalverb","ein Hilfsverb"], correct:0,
+      exp:"sich engagieren ist reflexiv." },
+    { type:"mc", prompt:"„C1“ bei Sprachkenntnissen bedeutet …",
+      options:["sehr gute Kenntnisse","Grundkenntnisse","keine Kenntnisse","Muttersprache"], correct:0,
+      exp:"Nach dem GER ist C1 ein sehr hohes Niveau." },
+    { type:"gap", prompt:"Englisch ____ und spreche ich sehr gut.",
+      options:["verstehe","versteht","verstehen","verstanden"], correct:0,
+      exp:"ich-Form: „ich verstehe“." },
+    { type:"pair", prompt:"Verbinde Lebenslauf-Eintrag und Rubrik.",
+      items:[
+        {l:"02.05.1996, Dortmund", r:"Persönliche Daten"},
+        {l:"B.A.-Studium Mode", r:"Schule und Ausbildung"},
+        {l:"Einkäufer im Modehaus", r:"Berufliche Laufbahn"},
+        {l:"Englisch B2", r:"Sprachkenntnisse"},
+      ]},
+    { type:"scramble", prompt:"Bilde einen richtigen Satz.",
+      words:["Von","2012","bis","2017","habe","ich","im","Ausland","gearbeitet","."],
+      answer:"Von 2012 bis 2017 habe ich im Ausland gearbeitet ." },
+    { type:"mc", prompt:"Welcher Satz passt zu einem Vorstellungsgespräch?",
+      options:["Ich möchte mich kurz vorstellen.","Bitte schalten Sie das Licht aus.","Der Kaffee ist kalt.","Es regnet wieder."], correct:0,
+      exp:"„Ich möchte mich kurz vorstellen.“ passt zum Gesprächsanfang." },
+    { type:"gap", prompt:"Ich bemühe mich ____ einen Praktikumsplatz.",
+      options:["um","für","an","auf"], correct:0,
+      exp:"sich bemühen um + Akkusativ." },
+  ]
+};
+
+
+</script>
+
+<script>
+/* ============ STATE & MECHANICS ============ */
+const LEKTION_ID = 1;
+const STORE_KEY = "linie1-beruf-l1";
+const NAME_KEY = "lda-username";
+const MODULES = [MODUL_1, MODUL_2, MODUL_3, MODUL_4];
+
+let state = loadState();
+let current = { modIndex:null, stack:[], pos:0, total:0, answered:false, lastCorrect:false, sel:null, pairState:null, orderState:null, scrambleState:null };
+
+function loadState(){
+  try{ return JSON.parse(localStorage.getItem(STORE_KEY)) || {done:{}}; }
+  catch(e){ return {done:{}}; }
+}
+function saveState(){ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }
+function getName(){ return localStorage.getItem(NAME_KEY) || ""; }
+function setName(n){ localStorage.setItem(NAME_KEY, n); }
+
+const screen = document.getElementById('screen');
+const backbar = document.getElementById('backbar');
+const backbtn = document.getElementById('backbtn');
+backbtn.onclick = ()=>{ renderOverview(); };
+
+function moduleUnlocked(i){
+  if(i===0) return true;
+  return !!state.done[i-1]; // previous module finished
+}
+
+/* ============ OVERVIEW ============ */
+function renderOverview(){
+  backbar.classList.add('hidden');
+  let html = '<div class="overview">';
+  html += '<h2>Eine neue Stelle</h2>';
+  html += '<p class="lead">Vier Module mit je 30 Aufgaben. Schließe ein Modul ab, um das Passwort fürs nächste zu bekommen — und lade dein Zertifikat herunter.</p>';
+  MODULES.forEach((m,i)=>{
+    const done = !!state.done[i];
+    const unlocked = moduleUnlocked(i);
+    let cls = 'module-card'; if(done) cls+=' done'; if(!unlocked) cls+=' locked';
+    let status, sc;
+    if(done){ status='✓ abgeschlossen'; sc='s-done'; }
+    else if(unlocked){ status='offen — jetzt starten'; sc='s-open'; }
+    else { status='🔒 gesperrt — Passwort nötig'; sc='s-lock'; }
+    html += `<div class="${cls}" data-i="${i}">
+      <div class="num">${done?'✓':(i+1)}</div>
+      <div class="body">
+        <h3>${m.title.replace('Modul '+(i+1)+' — ','')}</h3>
+        <p>${m.subtitle}</p>
+        <span class="status ${sc}">${status}</span>
+      </div></div>`;
+  });
+  html += '</div>';
+  screen.innerHTML = html;
+  screen.querySelectorAll('.module-card').forEach(c=>{
+    const i = +c.dataset.i;
+    if(moduleUnlocked(i)) c.onclick = ()=> enterModule(i);
+  });
+}
+
+/* ============ ENTER / UNLOCK ============ */
+function enterModule(i){
+  const m = MODULES[i];
+  if(i>0 && !state.done[i-1]){ renderLock(i); return; }
+  startModule(i);
+}
+function renderLock(i){
+  const m = MODULES[i];
+  backbar.classList.remove('hidden');
+  screen.innerHTML = `<div class="lockscreen card">
+    <div class="lock-ic">🔒</div>
+    <h2>${m.title}</h2>
+    <p>Gib das Passwort aus dem vorherigen Modul ein.</p>
+    <input id="pwin" placeholder="z. B. M2-XXXX-2026" autocapitalize="characters" autocomplete="off">
+    <div class="err" id="pwerr"></div>
+    <button class="btn btn-primary" id="pwgo">Freischalten</button>
+  </div>`;
+  const go = ()=>{
+    const v = document.getElementById('pwin').value.trim().toUpperCase();
+    if(v === m.passwordToUnlock){ startModule(i); }
+    else { document.getElementById('pwerr').textContent = 'Das Passwort stimmt nicht. Versuch es noch einmal.'; }
+  };
+  document.getElementById('pwgo').onclick = go;
+  document.getElementById('pwin').addEventListener('keydown',e=>{ if(e.key==='Enter') go(); });
+}
+
+/* ============ START MODULE ============ */
+function startModule(i){
+  const m = MODULES[i];
+  // build flat task stack, expanding reading followups
+  let stack = [];
+  m.tasks.forEach(t=>{
+    if(t.type==='reading'){
+      stack.push({type:'reading', title:t.title, text:t.text});
+      (t.followsReading||[]).forEach(f=> stack.push(Object.assign({}, f, {_reading:t.title})));
+    } else {
+      stack.push(t);
+    }
+  });
+  current = { modIndex:i, stack:stack, pos:0, total:stack.length, answered:false,
+    lastCorrect:false, sel:null, pairState:null, orderState:null, scrambleState:null,
+    reShown:{} };
+  backbar.classList.remove('hidden');
+  renderTask();
+}
+
+/* ============ RENDER TASK ============ */
+function renderTask(){
+  const c = current;
+  if(c.pos >= c.stack.length){ renderModuleEnd(); return; }
+  const t = c.stack[c.pos];
+  c.answered=false; c.sel=null; c.pairState=null; c.orderState=null; c.scrambleState=null;
+  const m = MODULES[c.modIndex];
+  const doneCount = c.pos;
+  const pct = Math.round((c.pos/c.total)*100);
+
+  let html = `<div class="task-head"><span class="mod">${m.title}</span>
+    <span class="count">${Math.min(c.pos+1,c.total)} / ${c.total}</span></div>
+    <div class="bar"><i style="width:${pct}%"></i></div><div class="card">`;
+
+  // reading text shown above the task if part of a reading group
+  if(t.type==='reading'){
+    html += `<div class="readbox"><div class="rt">📖 Lesetext</div><b>${t.title}</b><br>${t.text}</div>
+      <p class="prompt">Lies den Text in Ruhe. Es folgen Fragen dazu.</p>`;
+    html += `<div class="actions"><button class="btn btn-primary" id="readnext">Weiter zu den Fragen →</button></div></div>`;
+    screen.innerHTML = html;
+    document.getElementById('readnext').onclick = ()=>{ c.pos++; renderTask(); };
+    return;
+  }
+
+  if(t._reading){
+    const rt = findReadingText(t._reading);
+    if(rt) html += `<div class="readbox"><div class="rt">📖 ${rt.title}</div>${rt.text}</div>`;
+  }
+
+  html += `<p class="prompt">${t.prompt||''}</p>`;
+  html += renderBody(t);
+  html += `<div class="feedback" id="fb"></div>`;
+  html += `<div class="actions">
+    <button class="btn btn-primary" id="checkbtn" disabled>Prüfen</button>
+    <button class="btn btn-primary hidden" id="nextbtn">Weiter →</button></div></div>`;
+  screen.innerHTML = html;
+  wireBody(t);
+  document.getElementById('checkbtn').onclick = ()=> checkAnswer(t);
+  document.getElementById('nextbtn').onclick = ()=> goNext(t);
+}
+
+function findReadingText(title){
+  const m = MODULES[current.modIndex];
+  for(const t of m.tasks){ if(t.type==='reading' && t.title===title) return t; }
+  return null;
+}
+
+/* ===== bodies per type ===== */
+function renderBody(t){
+  if(t.type==='mc'){
+    return '<div class="opts">'+ t.options.map((o,i)=>`<button class="opt" data-i="${i}">${o}</button>`).join('') +'</div>';
+  }
+  if(t.type==='gap'){
+    return '<div class="opts">'+ t.options.map((o,i)=>`<button class="opt" data-i="${i}">${o}</button>`).join('') +'</div>';
+  }
+  if(t.type==='pair'){
+    const rights = shuffle(t.items.map((it,idx)=>({txt:it.r, idx})));
+    current.pairState = { rights, chosen:{}, order:[], rightOrder:rights };
+    let h = '<div class="pair-grid">';
+    t.items.forEach((it,li)=>{
+      h += `<div class="pair-row"><div class="pair-l">${it.l}</div><div class="pair-r-opts" data-li="${li}">`;
+      rights.forEach((r)=>{ h += `<button class="pair-r" data-li="${li}" data-ri="${r.idx}">${r.txt}</button>`; });
+      h += '</div></div>';
+    });
+    h += '</div>';
+    return h;
+  }
+  if(t.type==='scramble'){
+    const bank = shuffleSeeded(t.words.map((w,i)=>({w,i})), hashStr(t.answer));
+    current.scrambleState = { picked:[], bank };
+    let h = '<div class="tokens empty" id="toks"></div><div class="bank" id="bank">';
+    bank.forEach((b,bi)=>{ h += `<button class="tok" data-bi="${bi}">${b.w}</button>`; });
+    h += '</div>';
+    return h;
+  }
+  if(t.type==='order'){
+    const shuffled = shuffleSeeded(t.items.map((it,i)=>({it,i})), hashStr(t.items.join('|')));
+    current.orderState = { order: shuffled.map(s=>s.i), items:t.items };
+    return '<div class="order-list" id="orderlist"></div>';
+  }
+  return '';
+}
+
+function wireBody(t){
+  if(t.type==='mc' || t.type==='gap'){
+    screen.querySelectorAll('.opt').forEach(b=>{
+      b.onclick = ()=>{
+        if(current.answered) return;
+        screen.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));
+        b.classList.add('sel'); current.sel = +b.dataset.i;
+        document.getElementById('checkbtn').disabled = false;
+      };
+    });
+  }
+  if(t.type==='pair'){
+    screen.querySelectorAll('.pair-r').forEach(b=>{
+      b.onclick = ()=>{
+        if(current.answered) return;
+        const li = +b.dataset.li, ri = +b.dataset.ri;
+        const grp = screen.querySelector(`.pair-r-opts[data-li="${li}"]`);
+        grp.querySelectorAll('.pair-r').forEach(x=>x.classList.remove('sel'));
+        b.classList.add('sel');
+        current.pairState.chosen[li] = ri;
+        if(Object.keys(current.pairState.chosen).length === t.items.length){
+          document.getElementById('checkbtn').disabled = false;
+        }
+      };
+    });
+  }
+  if(t.type==='scramble'){ renderScramble(t); }
+  if(t.type==='order'){ renderOrder(t); }
+}
+
+function renderScramble(t){
+  const st = current.scrambleState;
+  const toks = document.getElementById('toks');
+  const bank = document.getElementById('bank');
+  toks.innerHTML=''; 
+  if(st.picked.length===0){ toks.classList.add('empty'); } else { toks.classList.remove('empty'); }
+  st.picked.forEach((bi,pi)=>{
+    const chip = document.createElement('button');
+    chip.className='chip'; chip.textContent = st.bank[bi].w;
+    chip.onclick = ()=>{ if(current.answered) return; st.picked.splice(pi,1); renderScramble(t); document.getElementById('checkbtn').disabled = st.picked.length===0; };
+    toks.appendChild(chip);
+  });
+  bank.querySelectorAll('.tok').forEach(b=>{
+    const bi = +b.dataset.bi;
+    b.classList.toggle('used', st.picked.includes(bi));
+    b.onclick = ()=>{ if(current.answered) return; if(st.picked.includes(bi)) return;
+      st.picked.push(bi); renderScramble(t); document.getElementById('checkbtn').disabled = false; };
+  });
+}
+
+function renderOrder(t){
+  const st = current.orderState;
+  const list = document.getElementById('orderlist');
+  list.innerHTML='';
+  st.order.forEach((origIdx,pos)=>{
+    const row = document.createElement('div'); row.className='order-item';
+    row.innerHTML = `<div class="ord-num">${pos+1}</div><div class="ord-txt">${st.items[origIdx]}</div>
+      <div class="ord-btns">
+        <button data-dir="-1" ${pos===0?'disabled':''}>▲</button>
+        <button data-dir="1" ${pos===st.order.length-1?'disabled':''}>▼</button></div>`;
+    row.querySelectorAll('button').forEach(btn=>{
+      btn.onclick = ()=>{ if(current.answered) return;
+        const dir = +btn.dataset.dir; const ni = pos+dir;
+        if(ni<0||ni>=st.order.length) return;
+        [st.order[pos],st.order[ni]]=[st.order[ni],st.order[pos]];
+        renderOrder(t); };
+    });
+    list.appendChild(row);
+  });
+  document.getElementById('checkbtn').disabled = false; // order always answerable
+}
+
+/* ===== check answers ===== */
+function checkAnswer(t){
+  if(current.answered) return;
+  let correct=false;
+  if(t.type==='mc' || t.type==='gap'){
+    correct = current.sel === t.correct;
+    screen.querySelectorAll('.opt').forEach((b,i)=>{
+      b.disabled=true;
+      if(i===t.correct) b.classList.add('correct');
+      else if(i===current.sel) b.classList.add('wrong');
+    });
+  }
+  else if(t.type==='pair'){
+    correct=true;
+    t.items.forEach((it,li)=>{ if(current.pairState.chosen[li]!==li) correct=false; });
+    screen.querySelectorAll('.pair-r').forEach(b=>{
+      const li=+b.dataset.li, ri=+b.dataset.ri; b.disabled=true;
+      if(current.pairState.chosen[li]===ri){ b.classList.add(ri===li?'correct':'wrong'); }
+      if(ri===li){ b.classList.add('correct'); }
+    });
+  }
+  else if(t.type==='scramble'){
+    const built = current.scrambleState.picked.map(bi=>current.scrambleState.bank[bi].w).join(' ');
+    correct = built === t.answer;
+    showScrambleCheck(correct, t);
+  }
+  else if(t.type==='order'){
+    correct = current.orderState.order.every((v,i)=> v===i);
+    showOrderCheck(correct);
+  }
+  current.answered=true; current.lastCorrect=correct;
+  const fb = document.getElementById('fb');
+  fb.className = 'feedback show '+(correct?'ok':'bad');
+  if(correct){
+    fb.innerHTML = '<b>✓ Richtig!</b>'+(t.exp?('<span>'+t.exp+'</span>'):'');
+  } else {
+    let sol='';
+    if(t.type==='scramble') sol = 'Lösung: '+t.answer;
+    else if(t.type==='order') sol = 'Richtige Reihenfolge: '+current.orderState.items.join(' → ');
+    else if(t.type==='mc'||t.type==='gap') sol = 'Richtig wäre: '+t.options[t.correct];
+    else if(t.type==='pair') sol = 'Achte auf die richtigen Paare (grün).';
+    fb.innerHTML = '<b>✗ Noch nicht.</b><span>'+sol+(t.exp?(' — '+t.exp):'')+'</span><br><span style="font-size:.8rem">Diese Aufgabe kommt am Ende noch einmal.</span>';
+  }
+  document.getElementById('checkbtn').classList.add('hidden');
+  document.getElementById('nextbtn').classList.remove('hidden');
+}
+
+function showScrambleCheck(correct,t){
+  screen.querySelectorAll('.tok').forEach(b=>b.style.pointerEvents='none');
+  screen.querySelectorAll('.chip').forEach(c=>{ c.style.pointerEvents='none';
+    c.style.borderColor = correct?'var(--ok)':'var(--bad)'; c.style.background = correct?'var(--ok-bg)':'var(--bad-bg)'; });
+}
+function showOrderCheck(correct){
+  screen.querySelectorAll('.order-item').forEach((row,pos)=>{
+    row.querySelectorAll('button').forEach(b=>b.disabled=true);
+    const ok = current.orderState.order[pos]===pos;
+    row.style.borderColor = ok?'var(--ok)':'var(--bad)';
+    row.style.background = ok?'var(--ok-bg)':'var(--bad-bg)';
+  });
+}
+
+/* ===== advance / endless stack ===== */
+function goNext(t){
+  if(!current.lastCorrect){
+    // re-queue this task at the end (endless stack)
+    current.stack.push(t);
+    current.total = current.stack.length;
+  }
+  current.pos++;
+  renderTask();
+}
+
+/* ============ MODULE END ============ */
+function renderModuleEnd(){
+  const i = current.modIndex;
+  const m = MODULES[i];
+  state.done[i] = true; saveState();
+  if(typeof window.goatcounter !== 'undefined'){
+    try{ window.goatcounter.count({path:'l'+LEKTION_ID+'-modul'+(i+1)+'-completed', title:'L1 Modul '+(i+1)+' completed', event:true}); }catch(e){}
+  }
+  const isLast = (i === MODULES.length-1);
+  const savedName = getName();
+  let html = `<div class="endscreen card">
+    <div class="big">🎉</div>
+    <h2>${m.title} geschafft!</h2>
+    <p>Du hast alle Aufgaben dieses Moduls richtig gelöst.</p>`;
+
+  // name + certificate
+  html += `<div class="namebox">
+      <input id="nameinput" placeholder="Dein Name für das Zertifikat" value="${savedName.replace(/"/g,'&quot;')}">
+    </div>
+    <div class="cert-wrap"><canvas id="cert" width="900" height="620"></canvas></div>
+    <div class="actions">
+      <button class="btn btn-ghost" id="dlcert">Zertifikat herunterladen</button>
+    </div>`;
+
+  if(!isLast){
+    html += `<div class="pw-reward" id="pwreward">
+      <div class="lab">🎁 Passwort für ${MODULES[i+1].title.replace(/ —.*/,'')}</div>
+      <div class="code">${m.passwordReward}</div>
+      <div class="hint">Tippen zum Kopieren — du brauchst es, um das nächste Modul zu öffnen.</div>
+    </div>
+    <div class="actions">
+      <button class="btn btn-primary" id="nextmod">Weiter zu ${MODULES[i+1].title.replace(/ —.*/,'')} →</button>
+    </div>`;
+  } else {
+    html += `<div class="pw-reward" id="pwreward" style="background:var(--ok)">
+      <div class="lab">🏆 Lektion 1 komplett!</div>
+      <div class="code">LINIE1-L1-MEISTER</div>
+      <div class="hint">Glückwunsch — du hast alle vier Module von „Eine neue Stelle" geschafft.</div>
+    </div>
+    <div class="actions">
+      <button class="btn btn-primary" id="tooverview">Zurück zur Übersicht</button>
+    </div>`;
+  }
+  html += `</div>`;
+  screen.innerHTML = html;
+
+  drawCertificate(savedName, m, isLast);
+  document.getElementById('nameinput').addEventListener('input', e=>{
+    setName(e.target.value); drawCertificate(e.target.value, m, isLast);
+  });
+  document.getElementById('dlcert').onclick = ()=>{
+    const nm = document.getElementById('nameinput').value.trim() || 'Teilnehmer/in';
+    setName(nm); drawCertificate(nm, m, isLast);
+    const link = document.createElement('a');
+    link.download = 'Zertifikat_Linie1_L1_Modul'+(i+1)+'.png';
+    link.href = document.getElementById('cert').toDataURL('image/png');
+    link.click();
+  };
+  const pr = document.getElementById('pwreward');
+  if(pr && !isLast){ pr.onclick = ()=>{ navigator.clipboard && navigator.clipboard.writeText(m.passwordReward);
+    pr.querySelector('.hint').textContent='✓ Kopiert!'; }; }
+  if(document.getElementById('nextmod')) document.getElementById('nextmod').onclick = ()=> enterModule(i+1);
+  if(document.getElementById('tooverview')) document.getElementById('tooverview').onclick = ()=> renderOverview();
+}
+
+/* ============ CERTIFICATE (canvas) ============ */
+function drawCertificate(name, m, isLast){
+  const cv = document.getElementById('cert'); if(!cv) return;
+  const ctx = cv.getContext('2d'); const W=cv.width, H=cv.height;
+  ctx.clearRect(0,0,W,H);
+  // bg
+  ctx.fillStyle='#fff'; ctx.fillRect(0,0,W,H);
+  ctx.fillStyle='#fdf2e2'; ctx.fillRect(0,0,W,H);
+  // border
+  ctx.strokeStyle='#e8820c'; ctx.lineWidth=10; ctx.strokeRect(22,22,W-44,H-44);
+  ctx.strokeStyle='#b5610a'; ctx.lineWidth=2; ctx.strokeRect(38,38,W-76,H-76);
+  ctx.textAlign='center';
+  ctx.fillStyle='#b5610a'; ctx.font='bold 26px Georgia,serif';
+  ctx.fillText('LERN DEUTSCH MIT ARASH', W/2, 95);
+  ctx.fillStyle='#2c2418'; ctx.font='bold 40px Georgia,serif';
+  ctx.fillText('Zertifikat', W/2, 160);
+  ctx.font='20px Georgia,serif'; ctx.fillStyle='#6b5d48';
+  ctx.fillText('Linie 1 Beruf B1/B2 · Lektion 1 — Eine neue Stelle', W/2, 200);
+  ctx.font='italic 18px Georgia,serif';
+  ctx.fillText('Hiermit wird bestätigt, dass', W/2, 270);
+  ctx.fillStyle='#e8820c'; ctx.font='bold 38px Georgia,serif';
+  ctx.fillText(name||'Teilnehmer/in', W/2, 325);
+  ctx.fillStyle='#2c2418'; ctx.font='19px Georgia,serif';
+  const line = isLast ? 'alle vier Module der Lektion 1 erfolgreich abgeschlossen hat.'
+                      : (m.title.replace(' — ',' — ')+' erfolgreich abgeschlossen hat.');
+  wrapText(ctx, line, W/2, 380, W-160, 28);
+  // seal
+  ctx.beginPath(); ctx.arc(W/2, 480, 46, 0, Math.PI*2);
+  ctx.fillStyle= isLast? '#3f8f4f':'#e8820c'; ctx.fill();
+  ctx.fillStyle='#fff'; ctx.font='bold 30px Georgia,serif';
+  ctx.fillText(isLast?'★':'✓', W/2, 492);
+  ctx.fillStyle='#6b5d48'; ctx.font='15px Georgia,serif';
+  const d = new Date();
+  ctx.fillText('Kiel, '+d.toLocaleDateString('de-DE'), W/2, 560);
+}
+function wrapText(ctx, text, x, y, maxW, lh){
+  const words = text.split(' '); let line=''; let yy=y;
+  for(const w of words){
+    const test = line+w+' ';
+    if(ctx.measureText(test).width > maxW && line){ ctx.fillText(line.trim(),x,yy); line=w+' '; yy+=lh; }
+    else line=test;
+  }
+  ctx.fillText(line.trim(),x,yy);
+}
+
+/* ============ utils ============ */
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function shuffleSeeded(a, seed){ a=a.slice(); let s=seed||1; const rnd=()=>{ s=(s*1103515245+12345)&0x7fffffff; return s/0x7fffffff; };
+  for(let i=a.length-1;i>0;i--){ const j=Math.floor(rnd()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function hashStr(str){ let h=5381; for(let i=0;i<str.length;i++){ h=((h<<5)+h)+str.charCodeAt(i); h=h&0x7fffffff; } return h||1; }
+
+/* ============ boot ============ */
+renderOverview();
+</script>
+</body>
+</html>
