@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grammatik: Das Perfekt — einfach erklärt | Lern Deutsch mit Arash</title>
+<script data-goatcounter="https://aguitoo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<style>
+  :root{
+    --accent:#7a4d8c;        /* Grammatik = Pflaumenlila */
+    --accent-deep:#5c3a6b;
+    --accent-soft:#efe2f5;
+    --paper:#f7f0fa;
+    --ink:#2a2330;
+    --ink-soft:#6a5d72;
+    --ok:#3f8f4f; --ok-bg:#e6f4e8;
+    --bad:#c0392b; --bad-bg:#fbe7e4;
+    --card:#fff; --line:#e3d3ec;
+    --shadow:0 6px 24px rgba(90,50,110,.12);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:linear-gradient(160deg,var(--paper),#fdf9ff);color:var(--ink);line-height:1.55}
+  .wrap{max-width:720px;margin:0 auto;padding:18px 16px 64px}
+  header.top{display:flex;align-items:center;gap:12px;padding:6px 0 14px}
+  header.top .logo{width:42px;height:42px;border-radius:12px;background:var(--accent);
+    display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:20px;box-shadow:var(--shadow)}
+  header.top h1{font-size:1.05rem;margin:0;font-weight:800}
+  header.top p{margin:0;font-size:.78rem;color:var(--ink-soft)}
+  .backbtn{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--line);
+    color:var(--accent-deep);font-weight:700;font-size:.88rem;padding:8px 13px;border-radius:999px;cursor:pointer;text-decoration:none;margin-bottom:14px}
+  /* explanation */
+  .explain{background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--shadow);margin-bottom:18px}
+  .explain h2{margin:.1em 0 .5em;font-size:1.3rem;color:var(--accent-deep)}
+  .explain h3{margin:1.1em 0 .3em;font-size:1.05rem;color:var(--accent-deep)}
+  .explain p{margin:.4em 0}
+  .formula{background:var(--accent-soft);border-radius:12px;padding:14px 16px;margin:12px 0;font-size:1.05rem;text-align:center;font-weight:700}
+  .formula .hl{color:var(--accent-deep)}
+  .ex{background:#faf6fc;border-left:3px solid var(--accent);border-radius:0 10px 10px 0;padding:9px 13px;margin:8px 0;font-size:.96rem}
+  .ex .pii{color:var(--accent-deep);font-weight:700}
+  table.tbl{width:100%;border-collapse:collapse;margin:10px 0;font-size:.92rem}
+  table.tbl th,table.tbl td{border:1px solid var(--line);padding:8px 10px;text-align:left}
+  table.tbl th{background:var(--accent-soft);color:var(--accent-deep)}
+  .note{background:#fff7e6;border:1px solid #f0d999;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:.9rem}
+  .note b{color:#a87a14}
+  .toggle{cursor:pointer;user-select:none;color:var(--accent-deep);font-weight:700;font-size:.9rem;display:inline-flex;align-items:center;gap:6px;margin-top:6px}
+  .collapsible{overflow:hidden;transition:max-height .3s ease;max-height:0}
+  .collapsible.open{max-height:2000px}
+  /* exercises */
+  .exsec h2{font-size:1.2rem;color:var(--accent-deep);margin:24px 0 6px}
+  .exsec .lead{color:var(--ink-soft);font-size:.9rem;margin:0 0 14px}
+  .scoreboard{display:flex;gap:10px;margin-bottom:14px}
+  .score-pill{flex:1;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:10px;text-align:center;box-shadow:var(--shadow)}
+  .score-pill .n{font-size:1.4rem;font-weight:800;color:var(--accent-deep)}
+  .score-pill .l{font-size:.72rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em}
+  .bar{height:9px;background:#eee;border-radius:99px;overflow:hidden;margin-bottom:16px}
+  .bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-deep));width:0;transition:width .35s}
+  .card{background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--shadow)}
+  .qtype{font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin-bottom:8px}
+  .prompt{font-size:1.1rem;font-weight:700;margin:0 0 16px}
+  .prompt .gap{color:var(--accent-deep);border-bottom:2px dashed var(--accent);padding:0 18px}
+  .opts{display:flex;flex-direction:column;gap:10px}
+  .opt{display:block;width:100%;text-align:left;background:#fff;border:2px solid var(--line);border-radius:13px;
+    padding:13px 15px;font-size:1rem;cursor:pointer;transition:.12s;color:var(--ink)}
+  .opt:active{transform:scale(.99)}
+  .opt.sel{border-color:var(--accent)}
+  .opt.correct{border-color:var(--ok);background:var(--ok-bg)}
+  .opt.wrong{border-color:var(--bad);background:var(--bad-bg)}
+  .opt:disabled{cursor:default}
+  .tokens{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;min-height:46px;border:2px dashed var(--line);border-radius:13px;padding:11px;background:#fdfbfe}
+  .tokens.empty::before{content:"Tippe die Wörter in der richtigen Reihenfolge an …";color:var(--ink-soft);font-size:.85rem}
+  .bank{display:flex;flex-wrap:wrap;gap:8px}
+  .tok{background:#fff;border:2px solid var(--line);border-radius:10px;padding:9px 13px;font-size:.96rem;cursor:pointer}
+  .tok:active{transform:scale(.96)}
+  .tok.used{opacity:.32;pointer-events:none}
+  .chip{background:var(--accent-soft);border:2px solid var(--accent);border-radius:10px;padding:9px 13px;font-size:.96rem;cursor:pointer}
+  .pair-grid{display:flex;flex-direction:column;gap:10px}
+  .pair-row{display:flex;gap:8px;align-items:center}
+  .pair-l{flex:0 0 42%;background:var(--accent-soft);border-radius:11px;padding:11px 12px;font-weight:600;font-size:.94rem}
+  .pair-r-opts{flex:1;display:flex;flex-direction:column;gap:6px}
+  .pair-r{background:#fff;border:2px solid var(--line);border-radius:10px;padding:9px 11px;font-size:.9rem;cursor:pointer}
+  .pair-r.sel{border-color:var(--accent)}
+  .pair-r.correct{border-color:var(--ok);background:var(--ok-bg)}
+  .pair-r.wrong{border-color:var(--bad);background:var(--bad-bg)}
+  .pair-r:disabled{cursor:default}
+  .pair-r.matched{opacity:.45;border-style:dashed}
+  .feedback{margin-top:15px;padding:13px 15px;border-radius:12px;font-size:.93rem;display:none}
+  .feedback.show{display:block}
+  .feedback.ok{background:var(--ok-bg);color:#256b34}
+  .feedback.bad{background:var(--bad-bg);color:#922}
+  .feedback b{display:block;margin-bottom:3px}
+  .actions{margin-top:16px;display:flex;gap:10px}
+  .btn{flex:1;border:none;border-radius:13px;padding:14px;font-size:1rem;font-weight:800;cursor:pointer;transition:.12s}
+  .btn:active{transform:scale(.98)}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:disabled{background:#d9c6e3;cursor:default}
+  .endscreen{text-align:center;padding:14px 6px}
+  .endscreen .big{font-size:3rem}
+  .restart{background:#fff;border:2px solid var(--line);color:var(--accent-deep);border-radius:13px;padding:13px;font-weight:800;cursor:pointer;width:100%;margin-top:10px}
+  .mini{font-size:.78rem;color:var(--ink-soft);text-align:center;margin-top:22px}
+  .hidden{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="logo">A</div>
+    <div>
+      <h1>Grammatik: Das Perfekt</h1>
+      <p>einfach erklärt · Lern Deutsch mit Arash</p>
+    </div>
+  </header>
+  <a class="backbtn" href="index.html">← Zurück zur Startseite</a>
+
+  <!-- ============ ERKLÄRUNG ============ -->
+  <div class="explain">
+    <h2>Das Perfekt — die wichtigste Vergangenheit zum Sprechen</h2>
+    <p>Wir benutzen das <b>Perfekt</b>, wenn wir über die <b>Vergangenheit sprechen</b> — im Alltag, beim Erzählen, in E-Mails an Freunde.</p>
+
+    <div class="formula">
+      <span class="hl">haben</span> oder <span class="hl">sein</span> &nbsp;+&nbsp; <span class="hl">Partizip II</span>
+    </div>
+    <div class="ex">Ich <b>habe</b> Pizza <span class="pii">gegessen</span>.</div>
+    <div class="ex">Wir <b>sind</b> nach Berlin <span class="pii">gefahren</span>.</div>
+    <p>Das konjugierte Verb (<i>habe/bin</i>) steht auf <b>Position 2</b>. Das <b>Partizip II</b> steht ganz am <b>Satzende</b>.</p>
+
+    <h3>1) haben oder sein?</h3>
+    <p>Die meisten Verben bilden das Perfekt mit <b>haben</b>. Mit <b>sein</b> bilden es nur zwei Gruppen:</p>
+    <table class="tbl">
+      <tr><th>sein, wenn …</th><th>Beispiel</th></tr>
+      <tr><td>Bewegung von A nach B</td><td>gehen, fahren, fliegen, kommen, laufen → <i>ich bin gegangen</i></td></tr>
+      <tr><td>Veränderung des Zustands</td><td>aufstehen, einschlafen, sterben, werden → <i>ich bin aufgestanden</i></td></tr>
+    </table>
+    <div class="note"><b>Merke:</b> Auch <i>sein</i> und <i>bleiben</i> nehmen „sein": <i>ich bin gewesen, ich bin geblieben</i>.</div>
+
+    <h3>2) Das Partizip II bilden</h3>
+    <p>Es gibt drei Gruppen. So erkennst du sie:</p>
+    <table class="tbl">
+      <tr><th>Gruppe</th><th>Bildung</th><th>Beispiel</th></tr>
+      <tr><td>regelmäßig (schwach)</td><td><b>ge</b> + Stamm + <b>t</b></td><td>machen → <span class="pii">gemacht</span></td></tr>
+      <tr><td>unregelmäßig (stark)</td><td><b>ge</b> + Stamm (oft neuer Vokal) + <b>en</b></td><td>sprechen → <span class="pii">gesprochen</span></td></tr>
+      <tr><td>gemischt</td><td><b>ge</b> + neuer Stamm + <b>t</b></td><td>bringen → <span class="pii">gebracht</span></td></tr>
+    </table>
+
+    <h3>3) Wichtig: kein „ge-" bei …</h3>
+    <table class="tbl">
+      <tr><th>Typ</th><th>Beispiel</th></tr>
+      <tr><td>Verben auf <b>-ieren</b></td><td>studieren → <span class="pii">studiert</span> (nicht ge…)</td></tr>
+      <tr><td>untrennbare Vorsilben (be-, er-, ver-, ent-, ge-, zer-)</td><td>verkaufen → <span class="pii">verkauft</span>, bekommen → <span class="pii">bekommen</span></td></tr>
+    </table>
+    <p>Bei <b>trennbaren</b> Verben kommt das „ge-" in die Mitte:</p>
+    <div class="ex">einkaufen → ein<span class="pii">ge</span>kauft &nbsp;·&nbsp; aufstehen → auf<span class="pii">ge</span>standen</div>
+
+    <span class="toggle" id="moreToggle">▸ Mehr Beispiele & häufige unregelmäßige Formen</span>
+    <div class="collapsible" id="moreBox">
+      <table class="tbl">
+        <tr><th>Infinitiv</th><th>Partizip II</th><th>haben/sein</th></tr>
+        <tr><td>essen</td><td>gegessen</td><td>haben</td></tr>
+        <tr><td>trinken</td><td>getrunken</td><td>haben</td></tr>
+        <tr><td>sehen</td><td>gesehen</td><td>haben</td></tr>
+        <tr><td>nehmen</td><td>genommen</td><td>haben</td></tr>
+        <tr><td>schreiben</td><td>geschrieben</td><td>haben</td></tr>
+        <tr><td>lesen</td><td>gelesen</td><td>haben</td></tr>
+        <tr><td>gehen</td><td>gegangen</td><td>sein</td></tr>
+        <tr><td>fahren</td><td>gefahren</td><td>sein</td></tr>
+        <tr><td>kommen</td><td>gekommen</td><td>sein</td></tr>
+        <tr><td>bleiben</td><td>geblieben</td><td>sein</td></tr>
+        <tr><td>werden</td><td>geworden</td><td>sein</td></tr>
+        <tr><td>finden</td><td>gefunden</td><td>haben</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ============ ÜBUNGEN ============ -->
+  <div class="exsec">
+    <h2>Übungen — jetzt selbst ausprobieren</h2>
+    <p class="lead">Gemischte Aufgaben. Falsch beantwortete kommen am Ende noch einmal, bis alles sitzt.</p>
+    <div class="scoreboard">
+      <div class="score-pill"><div class="n" id="scDone">0</div><div class="l">gelöst</div></div>
+      <div class="score-pill"><div class="n" id="scTotal">0</div><div class="l">gesamt</div></div>
+      <div class="score-pill"><div class="n" id="scWrong">0</div><div class="l">Fehler</div></div>
+    </div>
+    <div class="bar"><i id="barFill"></i></div>
+    <div id="exScreen"></div>
+  </div>
+
+  <p class="mini">Lern Deutsch mit Arash · arashguitoo.github.io</p>
+</div>
+
+<script>
+/* ===== toggle more ===== */
+document.getElementById('moreToggle').addEventListener('click',function(){
+  const box=document.getElementById('moreBox');
+  box.classList.toggle('open');
+  this.textContent = (box.classList.contains('open')?'▾':'▸')+' Mehr Beispiele & häufige unregelmäßige Formen';
+});
+
+/* ===== EXERCISES DATA ===== */
+const TASKS = [
+  { type:"mc", qt:"haben oder sein?", prompt:"Ich ____ gestern Pizza gegessen.",
+    options:["habe","bin","war","werde"], correct:0, exp:"essen → mit haben. Position 2: „habe“, Partizip „gegessen“ am Ende." },
+  { type:"mc", qt:"haben oder sein?", prompt:"Wir ____ nach Berlin gefahren.",
+    options:["sind","haben","waren","werden"], correct:0, exp:"fahren = Bewegung A→B → mit sein: „sind … gefahren“." },
+  { type:"mc", qt:"haben oder sein?", prompt:"Er ____ um 7 Uhr aufgestanden.",
+    options:["ist","hat","war","wird"], correct:0, exp:"aufstehen = Zustandsänderung → mit sein." },
+  { type:"mc", qt:"haben oder sein?", prompt:"Sie ____ einen Brief geschrieben.",
+    options:["hat","ist","war","wird"], correct:0, exp:"schreiben → mit haben." },
+  { type:"mc", qt:"haben oder sein?", prompt:"Das Kind ____ schnell eingeschlafen.",
+    options:["ist","hat","war","wird"], correct:0, exp:"einschlafen = Zustandsänderung → mit sein." },
+  { type:"mc", qt:"haben oder sein?", prompt:"Ich ____ den ganzen Tag zu Hause geblieben.",
+    options:["bin","habe","war","werde"], correct:0, exp:"bleiben nimmt immer „sein“: „bin … geblieben“." },
+
+  { type:"gap", qt:"Partizip II", prompt:"machen → ich habe ____", 
+    options:["gemacht","gemachen","macht","gemach"], correct:0, exp:"Regelmäßig: ge + mach + t = gemacht." },
+  { type:"gap", qt:"Partizip II", prompt:"sprechen → ich habe ____",
+    options:["gesprochen","gesprecht","gespracht","gesprocht"], correct:0, exp:"Unregelmäßig: ge + sproch + en, Vokalwechsel e→o." },
+  { type:"gap", qt:"Partizip II", prompt:"studieren → ich habe ____",
+    options:["studiert","gestudiert","studieren","gestudert"], correct:0, exp:"Verben auf -ieren: KEIN ge-. Nur studiert." },
+  { type:"gap", qt:"Partizip II", prompt:"verkaufen → ich habe ____",
+    options:["verkauft","geverkauft","verkaufen","gekauft"], correct:0, exp:"Untrennbare Vorsilbe ver-: kein ge-. → verkauft." },
+  { type:"gap", qt:"Partizip II", prompt:"einkaufen → ich habe ____",
+    options:["eingekauft","geeinkauft","einkauft","einkaufen"], correct:0, exp:"Trennbar: ge- kommt in die Mitte → ein-ge-kauft." },
+  { type:"gap", qt:"Partizip II", prompt:"bringen → ich habe ____",
+    options:["gebracht","gebringt","gebringen","gebrungen"], correct:0, exp:"Gemischtes Verb: neuer Stamm + t → gebracht." },
+  { type:"gap", qt:"Partizip II", prompt:"trinken → ich habe ____",
+    options:["getrunken","getrinkt","getrunkt","getrinken"], correct:0, exp:"Unregelmäßig, Vokalwechsel i→u → getrunken." },
+  { type:"gap", qt:"Partizip II", prompt:"arbeiten → ich habe ____",
+    options:["gearbeitet","gearbeitt","arbeitet","gearbeit"], correct:0, exp:"Stamm endet auf -t → Endung -et: gearbeitet." },
+
+  { type:"mc", qt:"Welche Form ist richtig?", prompt:"Welcher Satz ist korrekt?",
+    options:["Ich habe gestern Fußball gespielt.","Ich habe gestern Fußball gespielen.","Ich bin gestern Fußball gespielt.","Ich habe gestern gespielt Fußball."],
+    correct:0, exp:"spielen → haben + gespielt; Partizip steht am Ende." },
+  { type:"mc", qt:"Welche Form ist richtig?", prompt:"Welcher Satz ist korrekt?",
+    options:["Sie ist nach Hause gekommen.","Sie hat nach Hause gekommen.","Sie ist nach Hause gekommt.","Sie ist gekommen nach Hause."],
+    correct:0, exp:"kommen = Bewegung → sein; Partizip „gekommen“ am Ende." },
+  { type:"mc", qt:"Position im Satz", prompt:"Wo steht das Partizip II im Hauptsatz?",
+    options:["am Satzende","auf Position 1","auf Position 2","direkt nach dem Subjekt"],
+    correct:0, exp:"haben/sein auf Position 2, Partizip II am Satzende = die „Satzklammer“." },
+
+  { type:"scramble", qt:"Satz bilden", prompt:"Bilde einen Perfekt-Satz.",
+    words:["Ich","habe","einen","Film","gesehen","."], answer:"Ich habe einen Film gesehen ." },
+  { type:"scramble", qt:"Satz bilden", prompt:"Bilde einen Perfekt-Satz.",
+    words:["Wir","sind","ins","Kino","gegangen","."], answer:"Wir sind ins Kino gegangen ." },
+  { type:"scramble", qt:"Satz bilden", prompt:"Bilde einen Perfekt-Satz.",
+    words:["Sie","hat","ihre","Hausaufgaben","gemacht","."], answer:"Sie hat ihre Hausaufgaben gemacht ." },
+  { type:"scramble", qt:"Satz bilden", prompt:"Bilde einen Perfekt-Satz.",
+    words:["Am","Wochenende","bin","ich","spät","aufgestanden","."], answer:"Am Wochenende bin ich spät aufgestanden ." },
+  { type:"scramble", qt:"Satz bilden", prompt:"Bilde einen Perfekt-Satz.",
+    words:["Er","hat","drei","Jahre","in","Berlin","studiert","."], answer:"Er hat drei Jahre in Berlin studiert ." },
+
+  { type:"pair", qt:"Infinitiv ↔ Partizip II", prompt:"Verbinde Infinitiv und Partizip II.",
+    items:[ {l:"essen", r:"gegessen"}, {l:"fahren", r:"gefahren"}, {l:"lesen", r:"gelesen"}, {l:"nehmen", r:"genommen"} ] },
+  { type:"pair", qt:"Infinitiv ↔ Partizip II", prompt:"Verbinde Infinitiv und Partizip II.",
+    items:[ {l:"bringen", r:"gebracht"}, {l:"finden", r:"gefunden"}, {l:"schreiben", r:"geschrieben"}, {l:"trinken", r:"getrunken"} ] },
+  { type:"pair", qt:"haben oder sein?", prompt:"Ordne jedem Verb das richtige Hilfsverb zu.",
+    items:[ {l:"gehen", r:"ist gegangen"}, {l:"kaufen", r:"hat gekauft"}, {l:"fliegen", r:"ist geflogen"}, {l:"sehen", r:"hat gesehen"} ] },
+
+  { type:"gap", qt:"Lückentext", prompt:"Gestern ____ ich meine Freunde getroffen.",
+    options:["habe","bin","war","werde"], correct:0, exp:"treffen → haben: „habe … getroffen“." },
+  { type:"gap", qt:"Lückentext", prompt:"Letztes Jahr ____ wir nach Italien geflogen.",
+    options:["sind","haben","waren","werden"], correct:0, exp:"fliegen = Bewegung → sein: „sind … geflogen“." },
+  { type:"mc", qt:"Fehler finden", prompt:"In welchem Satz ist ein Fehler?",
+    options:["Ich habe nach Hause gegangen.","Ich bin nach Hause gegangen.","Ich habe einen Kaffee getrunken.","Ich bin früh aufgestanden."],
+    correct:0, exp:"gehen braucht „sein“, nicht „haben“: richtig wäre „Ich bin nach Hause gegangen.“." },
+  { type:"mc", qt:"Verben auf -ieren", prompt:"telefonieren → Wie lautet das Partizip II?",
+    options:["telefoniert","getelefoniert","telefonieren","getelefonert"], correct:0, exp:"-ieren-Verben: kein ge-. → telefoniert." },
+  { type:"scramble", qt:"Satz bilden", prompt:"Bilde einen Perfekt-Satz mit „sein“.",
+    words:["Meine","Schwester","ist","gestern","angekommen","."], answer:"Meine Schwester ist gestern angekommen ." },
+];
+
+/* ===== ENGINE ===== */
+let stack = TASKS.slice();
+let pos=0, total=stack.length, wrong=0, answered=false, lastCorrect=false, sel=null, pairState=null, scrambleState=null;
+const exScreen=document.getElementById('exScreen');
+
+function updateScore(){
+  document.getElementById('scDone').textContent = pos;
+  document.getElementById('scTotal').textContent = total;
+  document.getElementById('scWrong').textContent = wrong;
+  document.getElementById('barFill').style.width = Math.round((pos/total)*100)+'%';
+}
+
+function render(){
+  updateScore();
+  if(pos>=stack.length){ renderEnd(); return; }
+  const t=stack[pos];
+  answered=false; sel=null; pairState=null; scrambleState=null;
+  let html='<div class="card"><div class="qtype">'+t.qt+'</div>';
+  html+='<p class="prompt">'+formatPrompt(t.prompt)+'</p>';
+  html+=renderBody(t);
+  html+='<div class="feedback" id="fb"></div>';
+  html+='<div class="actions"><button class="btn btn-primary" id="checkbtn" disabled>Prüfen</button>'+
+        '<button class="btn btn-primary hidden" id="nextbtn">Weiter →</button></div></div>';
+  exScreen.innerHTML=html;
+  wireBody(t);
+  document.getElementById('checkbtn').onclick=()=>check(t);
+  document.getElementById('nextbtn').onclick=()=>next(t);
+}
+function formatPrompt(p){ return p.replace(/____/g,'<span class="gap"></span>'); }
+
+function renderBody(t){
+  if(t.type==='mc'||t.type==='gap'){
+    return '<div class="opts">'+t.options.map((o,i)=>'<button class="opt" data-i="'+i+'">'+o+'</button>').join('')+'</div>';
+  }
+  if(t.type==='pair'){
+    const rights=shuffle(t.items.map((it,idx)=>({txt:it.r,idx})));
+    pairState={chosen:{}};
+    let h='<div class="pair-grid">';
+    t.items.forEach((it,li)=>{
+      h+='<div class="pair-row"><div class="pair-l">'+it.l+'</div><div class="pair-r-opts" data-li="'+li+'">';
+      rights.forEach(r=>{ h+='<button class="pair-r" data-li="'+li+'" data-ri="'+r.idx+'">'+r.txt+'</button>'; });
+      h+='</div></div>';
+    });
+    return h+'</div>';
+  }
+  if(t.type==='scramble'){
+    const bank=shuffleSeeded(t.words.map((w,i)=>({w,i})), hashStr(t.answer));
+    scrambleState={picked:[],bank};
+    let h='<div class="tokens empty" id="toks"></div><div class="bank" id="bank">';
+    bank.forEach((b,bi)=>{ h+='<button class="tok" data-bi="'+bi+'">'+b.w+'</button>'; });
+    return h+'</div>';
+  }
+  return '';
+}
+function wireBody(t){
+  if(t.type==='mc'||t.type==='gap'){
+    exScreen.querySelectorAll('.opt').forEach(b=>{
+      b.onclick=()=>{ if(answered)return;
+        exScreen.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));
+        b.classList.add('sel'); sel=+b.dataset.i;
+        document.getElementById('checkbtn').disabled=false; };
+    });
+  }
+  if(t.type==='pair'){
+    exScreen.querySelectorAll('.pair-r').forEach(b=>{
+      b.onclick=()=>{ if(answered)return;
+        const li=+b.dataset.li, ri=+b.dataset.ri;
+        const grp=exScreen.querySelector('.pair-r-opts[data-li="'+li+'"]');
+        grp.querySelectorAll('.pair-r').forEach(x=>x.classList.remove('sel'));
+        b.classList.add('sel'); pairState.chosen[li]=ri;
+        if(Object.keys(pairState.chosen).length===t.items.length) document.getElementById('checkbtn').disabled=false; };
+    });
+  }
+  if(t.type==='scramble') renderScramble(t);
+}
+function renderScramble(t){
+  const st=scrambleState, toks=document.getElementById('toks'), bank=document.getElementById('bank');
+  toks.innerHTML=''; toks.classList.toggle('empty', st.picked.length===0);
+  st.picked.forEach((bi,pi)=>{
+    const chip=document.createElement('button'); chip.className='chip'; chip.textContent=st.bank[bi].w;
+    chip.onclick=()=>{ if(answered)return; st.picked.splice(pi,1); renderScramble(t);
+      document.getElementById('checkbtn').disabled=st.picked.length===0; };
+    toks.appendChild(chip);
+  });
+  bank.querySelectorAll('.tok').forEach(b=>{ const bi=+b.dataset.bi;
+    b.classList.toggle('used', st.picked.includes(bi));
+    b.onclick=()=>{ if(answered)return; if(st.picked.includes(bi))return;
+      st.picked.push(bi); renderScramble(t); document.getElementById('checkbtn').disabled=false; };
+  });
+}
+function check(t){
+  if(answered)return;
+  let correct=false;
+  if(t.type==='mc'||t.type==='gap'){
+    correct=sel===t.correct;
+    exScreen.querySelectorAll('.opt').forEach((b,i)=>{ b.disabled=true;
+      if(i===t.correct)b.classList.add('correct'); else if(i===sel)b.classList.add('wrong'); });
+  } else if(t.type==='pair'){
+    correct=true;
+    t.items.forEach((it,li)=>{ if(pairState.chosen[li]!==li)correct=false; });
+    exScreen.querySelectorAll('.pair-r').forEach(b=>{ const li=+b.dataset.li, ri=+b.dataset.ri; b.disabled=true;
+      if(pairState.chosen[li]===ri) b.classList.add(ri===li?'correct':'wrong');
+      if(ri===li) b.classList.add('correct'); });
+  } else if(t.type==='scramble'){
+    const built=scrambleState.picked.map(bi=>scrambleState.bank[bi].w).join(' ');
+    correct=built===t.answer;
+    exScreen.querySelectorAll('.tok,.chip').forEach(c=>{ c.style.pointerEvents='none';
+      c.style.borderColor=correct?'var(--ok)':'var(--bad)'; c.style.background=correct?'var(--ok-bg)':'var(--bad-bg)'; });
+  }
+  answered=true; lastCorrect=correct;
+  if(!correct) wrong++;
+  const fb=document.getElementById('fb');
+  fb.className='feedback show '+(correct?'ok':'bad');
+  if(correct){ fb.innerHTML='<b>✓ Richtig!</b>'+(t.exp?'<span>'+t.exp+'</span>':''); }
+  else{
+    let sol = t.type==='scramble' ? ('Lösung: '+t.answer)
+      : (t.type==='pair' ? 'Achte auf die grünen Paare.'
+      : 'Richtig wäre: '+t.options[t.correct]);
+    fb.innerHTML='<b>✗ Noch nicht.</b><span>'+sol+(t.exp?' — '+t.exp:'')+'</span><br><span style="font-size:.8rem">Diese Aufgabe kommt am Ende noch einmal.</span>';
+  }
+  document.getElementById('checkbtn').classList.add('hidden');
+  document.getElementById('nextbtn').classList.remove('hidden');
+}
+function next(t){
+  if(!lastCorrect){ stack.push(t); total=stack.length; }
+  pos++; render();
+}
+function renderEnd(){
+  if(typeof window.goatcounter!=='undefined'){ try{ window.goatcounter.count({path:'grammatik-perfekt-completed',title:'Grammatik Perfekt completed',event:true}); }catch(e){} }
+  updateScore();
+  exScreen.innerHTML='<div class="card endscreen"><div class="big">🎉</div>'+
+    '<h2>Geschafft!</h2><p>Du hast alle Perfekt-Aufgaben gelöst.</p>'+
+    '<p style="color:var(--ink-soft)">Fehler unterwegs: '+wrong+'</p>'+
+    '<button class="restart" id="restart">Noch einmal üben</button></div>';
+  document.getElementById('restart').onclick=()=>{ stack=TASKS.slice(); pos=0; total=stack.length; wrong=0; render(); };
+}
+
+/* utils */
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function shuffleSeeded(a,seed){ a=a.slice(); let s=seed||1; const r=()=>{ s=(s*1103515245+12345)&0x7fffffff; return s/0x7fffffff; };
+  for(let i=a.length-1;i>0;i--){ const j=Math.floor(r()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function hashStr(str){ let h=5381; for(let i=0;i<str.length;i++){ h=((h<<5)+h)+str.charCodeAt(i); h=h&0x7fffffff; } return h||1; }
+
+render();
+</script>
+</body>
+</html>
