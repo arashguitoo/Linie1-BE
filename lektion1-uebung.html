@@ -30,8 +30,13 @@
   header.top{display:flex;align-items:center;gap:12px;padding:8px 0 16px}
   header.top .logo{width:42px;height:42px;border-radius:12px;background:var(--accent);
     display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:20px;box-shadow:var(--shadow)}
+  header.top .head-txt{flex:1;min-width:0}
   header.top h1{font-size:1.05rem;margin:0;font-weight:800}
   header.top p{margin:0;font-size:.78rem;color:var(--ink-soft)}
+  header.top .homebtn{flex:0 0 auto;width:42px;height:42px;border-radius:12px;background:#fff;
+    border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;
+    font-size:1.2rem;text-decoration:none;box-shadow:var(--shadow);transition:transform .12s}
+  header.top .homebtn:active{transform:scale(.94)}
   .backbar{margin:4px 0 14px}
   .backbtn{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--line);
     color:var(--accent-deep);font-weight:700;font-size:.9rem;padding:9px 14px;border-radius:999px;cursor:pointer}
@@ -140,10 +145,11 @@
 <div class="wrap">
   <header class="top">
     <div class="logo">A</div>
-    <div>
+    <div class="head-txt">
       <h1>Linie 1 <i>Beruf</i> B1/B2 — Lektion 1</h1>
       <p>Eine neue Stelle · Lern Deutsch mit Arash</p>
     </div>
+    <a class="homebtn" href="index.html" title="Zur Startseite" aria-label="Zur Startseite">🏠</a>
   </header>
 
   <div class="backbar hidden" id="backbar">
