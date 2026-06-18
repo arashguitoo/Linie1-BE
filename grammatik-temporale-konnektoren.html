@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grammatik: Temporale Konnektoren — Übungen | Lern Deutsch mit Arash</title>
+<script data-goatcounter="https://aguitoo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<style>
+  :root{
+    --accent:#7a4d8c; --accent-deep:#5c3a6b; --accent-soft:#efe2f5;
+    --paper:#f7f0fa; --ink:#2a2330; --ink-soft:#6a5d72;
+    --ok:#3f8f4f; --ok-bg:#e6f4e8; --bad:#c0392b; --bad-bg:#fbe7e4;
+    --card:#fff; --line:#e3d3ec; --shadow:0 6px 24px rgba(90,50,110,.12);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:linear-gradient(160deg,var(--paper),#fdf9ff);color:var(--ink);line-height:1.55}
+  .wrap{max-width:720px;margin:0 auto;padding:18px 16px 64px}
+  header.top{display:flex;align-items:center;gap:12px;padding:6px 0 14px}
+  header.top .logo{width:42px;height:42px;border-radius:12px;background:var(--accent);
+    display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:20px;box-shadow:var(--shadow)}
+  header.top h1{font-size:1.05rem;margin:0;font-weight:800}
+  header.top p{margin:0;font-size:.78rem;color:var(--ink-soft)}
+  header.top .head-txt{flex:1;min-width:0}
+  header.top .homebtn{flex:0 0 auto;width:42px;height:42px;border-radius:12px;background:#fff;
+    border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;
+    font-size:1.2rem;text-decoration:none;box-shadow:var(--shadow);transition:transform .12s}
+  header.top .homebtn:active{transform:scale(.94)}
+  .backbtn{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--line);
+    color:var(--accent-deep);font-weight:700;font-size:.88rem;padding:8px 13px;border-radius:999px;cursor:pointer;text-decoration:none;margin-bottom:14px}
+  /* Schaubild card */
+  .chart-card{background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:16px 14px;box-shadow:var(--shadow);margin-bottom:18px}
+  .chart-card h2{margin:.1em 0 .2em;font-size:1.15rem;color:var(--accent-deep);text-align:center}
+  .chart-card .sub{text-align:center;font-size:.82rem;color:var(--ink-soft);margin:0 0 8px}
+  .chart-card svg{width:100%;height:auto;display:block}
+  /* exercises */
+  .exsec h2{font-size:1.2rem;color:var(--accent-deep);margin:24px 0 6px}
+  .exsec .lead{color:var(--ink-soft);font-size:.9rem;margin:0 0 14px}
+  .scoreboard{display:flex;gap:10px;margin-bottom:14px}
+  .score-pill{flex:1;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:10px;text-align:center;box-shadow:var(--shadow)}
+  .score-pill .n{font-size:1.4rem;font-weight:800;color:var(--accent-deep)}
+  .score-pill .l{font-size:.72rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em}
+  .bar{height:9px;background:#eee;border-radius:99px;overflow:hidden;margin-bottom:16px}
+  .bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-deep));width:0;transition:width .35s}
+  .card{background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--shadow)}
+  .qtype{font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin-bottom:8px}
+  .prompt{font-size:1.1rem;font-weight:700;margin:0 0 16px}
+  .prompt .gap{color:var(--accent-deep);border-bottom:2px dashed var(--accent);padding:0 18px}
+  .opts{display:flex;flex-direction:column;gap:10px}
+  .opt{display:block;width:100%;text-align:left;background:#fff;border:2px solid var(--line);border-radius:13px;
+    padding:13px 15px;font-size:1rem;cursor:pointer;transition:.12s;color:var(--ink)}
+  .opt:active{transform:scale(.99)}
+  .opt.sel{border-color:var(--accent)}
+  .opt.correct{border-color:var(--ok);background:var(--ok-bg)}
+  .opt.wrong{border-color:var(--bad);background:var(--bad-bg)}
+  .opt:disabled{cursor:default}
+  .tokens{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;min-height:46px;border:2px dashed var(--line);border-radius:13px;padding:11px;background:#fdfbfe}
+  .tokens.empty::before{content:"Tippe die Wörter in der richtigen Reihenfolge an …";color:var(--ink-soft);font-size:.85rem}
+  .bank{display:flex;flex-wrap:wrap;gap:8px}
+  .tok{background:#fff;border:2px solid var(--line);border-radius:10px;padding:9px 13px;font-size:.96rem;cursor:pointer}
+  .tok:active{transform:scale(.96)}
+  .tok.used{opacity:.32;pointer-events:none}
+  .chip{background:var(--accent-soft);border:2px solid var(--accent);border-radius:10px;padding:9px 13px;font-size:.96rem;cursor:pointer}
+  .pair-grid{display:flex;flex-direction:column;gap:10px}
+  .pair-row{display:flex;gap:8px;align-items:center}
+  .pair-l{flex:0 0 46%;background:var(--accent-soft);border-radius:11px;padding:11px 12px;font-weight:600;font-size:.92rem}
+  .pair-r-opts{flex:1;display:flex;flex-direction:column;gap:6px}
+  .pair-r{background:#fff;border:2px solid var(--line);border-radius:10px;padding:9px 11px;font-size:.88rem;cursor:pointer}
+  .pair-r.sel{border-color:var(--accent)}
+  .pair-r.correct{border-color:var(--ok);background:var(--ok-bg)}
+  .pair-r.wrong{border-color:var(--bad);background:var(--bad-bg)}
+  .pair-r:disabled{cursor:default}
+  .feedback{margin-top:15px;padding:13px 15px;border-radius:12px;font-size:.93rem;display:none}
+  .feedback.show{display:block}
+  .feedback.ok{background:var(--ok-bg);color:#256b34}
+  .feedback.bad{background:var(--bad-bg);color:#922}
+  .feedback b{display:block;margin-bottom:3px}
+  .actions{margin-top:16px;display:flex;gap:10px}
+  .btn{flex:1;border:none;border-radius:13px;padding:14px;font-size:1rem;font-weight:800;cursor:pointer;transition:.12s}
+  .btn:active{transform:scale(.98)}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:disabled{background:#d9c6e3;cursor:default}
+  .endscreen{text-align:center;padding:14px 6px}
+  .endscreen .big{font-size:3rem}
+  .restart{background:#fff;border:2px solid var(--line);color:var(--accent-deep);border-radius:13px;padding:13px;font-weight:800;cursor:pointer;width:100%;margin-top:10px}
+  .mini{font-size:.78rem;color:var(--ink-soft);text-align:center;margin-top:22px}
+  .hidden{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="logo">A</div>
+    <div class="head-txt">
+      <h1>Temporale Konnektoren</h1>
+      <p>Schaubild & Übungen · Lern Deutsch mit Arash</p>
+    </div>
+    <a class="homebtn" href="index.html" title="Zur Startseite" aria-label="Zur Startseite">🏠</a>
+  </header>
+  <a class="backbtn" href="index.html">← Zurück zur Startseite</a>
+
+  <!-- ============ SCHAUBILD ============ -->
+  <div class="chart-card">
+    <h2>Alle Bedeutungen auf einen Blick</h2>
+    <p class="sub">Wann zeigt der Konnektor was auf der Zeitachse?</p>
+    <svg viewBox="0 0 680 600" role="img" aria-labelledby="svgtitle svgdesc" xmlns="http://www.w3.org/2000/svg">
+      <title id="svgtitle">Zeitachse mit temporalen Konnektoren</title>
+      <desc id="svgdesc">Eine Zeitachse zeigt, welche Bedeutung die Konnektoren als, wenn, während, bevor, nachdem, seit/seitdem und bis ausdrücken.</desc>
+      <defs>
+        <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </marker>
+      </defs>
+
+      <!-- Master timeline -->
+      <text x="40" y="34" font-size="13" fill="#5c3a6b" font-weight="700">VERGANGENHEIT</text>
+      <text x="640" y="34" font-size="13" fill="#5c3a6b" font-weight="700" text-anchor="end">GEGENWART / ZUKUNFT</text>
+      <line x1="40" y1="48" x2="640" y2="48" stroke="#7a4d8c" stroke-width="2" marker-end="url(#ah)"/>
+
+      <!-- ===== Row: als (einmalig, Vergangenheit) ===== -->
+      <g>
+        <rect x="40" y="70" width="84" height="26" rx="6" fill="#efe2f5" stroke="#7a4d8c" stroke-width="0.6"/>
+        <text x="82" y="88" font-size="14" font-weight="700" fill="#5c3a6b" text-anchor="middle">als</text>
+        <circle cx="210" cy="83" r="8" fill="#d85a30"/>
+        <text x="230" y="80" font-size="12.5" fill="#2a2330">einmaliges Ereignis,</text>
+        <text x="230" y="95" font-size="12.5" fill="#6a5d72">nur Vergangenheit · „Als ich ankam, …“</text>
+      </g>
+
+      <!-- ===== Row: wenn (wiederholt / Gegenwart-Zukunft) ===== -->
+      <g>
+        <rect x="40" y="116" width="84" height="26" rx="6" fill="#efe2f5" stroke="#7a4d8c" stroke-width="0.6"/>
+        <text x="82" y="134" font-size="14" font-weight="700" fill="#5c3a6b" text-anchor="middle">wenn</text>
+        <circle cx="180" cy="129" r="6" fill="#1d9e75"/>
+        <circle cx="230" cy="129" r="6" fill="#1d9e75"/>
+        <circle cx="280" cy="129" r="6" fill="#1d9e75"/>
+        <text x="300" y="126" font-size="12.5" fill="#2a2330">wiederholt (immer wenn)</text>
+        <text x="300" y="141" font-size="12.5" fill="#6a5d72">oder einmalig in Gegenwart/Zukunft</text>
+      </g>
+
+      <!-- ===== Row: während (gleichzeitig) ===== -->
+      <g>
+        <rect x="40" y="162" width="84" height="26" rx="6" fill="#efe2f5" stroke="#7a4d8c" stroke-width="0.6"/>
+        <text x="82" y="180" font-size="14" font-weight="700" fill="#5c3a6b" text-anchor="middle">während</text>
+        <rect x="160" y="170" width="170" height="11" rx="5" fill="#378add" opacity="0.55"/>
+        <text x="345" y="172" font-size="12.5" fill="#2a2330">gleichzeitig:</text>
+        <text x="345" y="187" font-size="12.5" fill="#6a5d72">zwei Handlungen zur selben Zeit</text>
+      </g>
+
+      <!-- ===== Row: bevor (A vor B) ===== -->
+      <g>
+        <rect x="40" y="208" width="84" height="26" rx="6" fill="#efe2f5" stroke="#7a4d8c" stroke-width="0.6"/>
+        <text x="82" y="226" font-size="14" font-weight="700" fill="#5c3a6b" text-anchor="middle">bevor</text>
+        <circle cx="180" cy="221" r="7" fill="#ba7517"/>
+        <text x="180" y="246" font-size="10.5" fill="#6a5d72" text-anchor="middle">B (Nebensatz)</text>
+        <line x1="192" y1="221" x2="252" y2="221" stroke="#ba7517" stroke-width="2" marker-end="url(#ah)"/>
+        <circle cx="266" cy="221" r="7" fill="#534ab7"/>
+        <text x="288" y="218" font-size="12.5" fill="#2a2330">das eine</text>
+        <text x="288" y="232" font-size="12.5" fill="#6a5d72">geschieht vor dem anderen</text>
+      </g>
+
+      <!-- ===== Row: nachdem (B nach A, oft Vorzeitigkeit) ===== -->
+      <g>
+        <rect x="40" y="262" width="84" height="26" rx="6" fill="#efe2f5" stroke="#7a4d8c" stroke-width="0.6"/>
+        <text x="82" y="280" font-size="14" font-weight="700" fill="#5c3a6b" text-anchor="middle">nachdem</text>
+        <circle cx="180" cy="275" r="7" fill="#534ab7"/>
+        <text x="180" y="300" font-size="10.5" fill="#6a5d72" text-anchor="middle">zuerst</text>
+        <line x1="192" y1="275" x2="252" y2="275" stroke="#534ab7" stroke-width="2" marker-end="url(#ah)"/>
+        <circle cx="266" cy="275" r="7" fill="#ba7517"/>
+        <text x="288" y="272" font-size="12.5" fill="#2a2330">danach:</text>
+        <text x="288" y="286" font-size="12.5" fill="#6a5d72">erst A fertig, dann B (Zeitenwechsel)</text>
+      </g>
+
+      <!-- ===== Row: seit / seitdem (Beginn bis jetzt) ===== -->
+      <g>
+        <rect x="40" y="316" width="84" height="26" rx="6" fill="#efe2f5" stroke="#7a4d8c" stroke-width="0.6"/>
+        <text x="82" y="334" font-size="13.5" font-weight="700" fill="#5c3a6b" text-anchor="middle">seit/seitdem</text>
+        <circle cx="180" cy="329" r="7" fill="#d4537e"/>
+        <text x="180" y="354" font-size="10.5" fill="#6a5d72" text-anchor="middle">Startpunkt</text>
+        <line x1="188" y1="329" x2="360" y2="329" stroke="#d4537e" stroke-width="3" marker-end="url(#ah)"/>
+        <text x="376" y="326" font-size="12.5" fill="#2a2330">ab einem Zeitpunkt</text>
+        <text x="376" y="340" font-size="12.5" fill="#6a5d72">bis jetzt (dauert an)</text>
+      </g>
+
+      <!-- ===== Row: bis (Endpunkt) ===== -->
+      <g>
+        <rect x="40" y="370" width="84" height="26" rx="6" fill="#efe2f5" stroke="#7a4d8c" stroke-width="0.6"/>
+        <text x="82" y="388" font-size="14" font-weight="700" fill="#5c3a6b" text-anchor="middle">bis</text>
+        <line x1="160" y1="383" x2="300" y2="383" stroke="#0f6e56" stroke-width="3"/>
+        <line x1="300" y1="372" x2="300" y2="394" stroke="#0f6e56" stroke-width="3"/>
+        <text x="300" y="408" font-size="10.5" fill="#6a5d72" text-anchor="middle">Endpunkt</text>
+        <text x="316" y="380" font-size="12.5" fill="#2a2330">bis zu einem</text>
+        <text x="316" y="394" font-size="12.5" fill="#6a5d72">Schlusspunkt (dann Ende)</text>
+      </g>
+
+      <!-- divider -->
+      <line x1="40" y1="430" x2="640" y2="430" stroke="#e3d3ec" stroke-width="1"/>
+
+      <!-- Mini-merksätze (Satzbau) -->
+      <text x="40" y="456" font-size="13" font-weight="700" fill="#5c3a6b">Satzbau (Nebensatz → Verb am Ende):</text>
+      <g>
+        <rect x="40" y="468" width="600" height="40" rx="8" fill="#faf6fc" stroke="#e3d3ec" stroke-width="0.6"/>
+        <text x="54" y="485" font-size="12.5" fill="#2a2330"><tspan font-weight="700" fill="#5c3a6b">Als</tspan> ich nach Hause <tspan font-weight="700" fill="#d85a30">kam</tspan>, <tspan font-weight="700" fill="#d85a30">war</tspan> es schon dunkel.</text>
+        <text x="54" y="501" font-size="11" fill="#6a5d72">Nebensatz zuerst → danach Verb–Verb (Komma in der Mitte).</text>
+      </g>
+      <g>
+        <rect x="40" y="516" width="600" height="40" rx="8" fill="#faf6fc" stroke="#e3d3ec" stroke-width="0.6"/>
+        <text x="54" y="533" font-size="12.5" fill="#2a2330"><tspan font-weight="700" fill="#5c3a6b">Nachdem</tspan> ich gegessen <tspan font-weight="700" fill="#534ab7">hatte</tspan>, <tspan font-weight="700" fill="#ba7517">ging</tspan> ich schlafen.</text>
+        <text x="54" y="549" font-size="11" fill="#6a5d72">nachdem: oft Plusquamperfekt + Präteritum (Vorzeitigkeit).</text>
+      </g>
+    </svg>
+  </div>
+
+  <!-- ============ ÜBUNGEN ============ -->
+  <div class="exsec">
+    <h2>Übungen</h2>
+    <p class="lead">Gemischte Aufgaben zu allen Konnektoren. Falsch beantwortete kommen am Ende noch einmal.</p>
+    <div class="scoreboard">
+      <div class="score-pill"><div class="n" id="scDone">0</div><div class="l">gelöst</div></div>
+      <div class="score-pill"><div class="n" id="scTotal">0</div><div class="l">gesamt</div></div>
+      <div class="score-pill"><div class="n" id="scWrong">0</div><div class="l">Fehler</div></div>
+    </div>
+    <div class="bar"><i id="barFill"></i></div>
+    <div id="exScreen"></div>
+  </div>
+
+  <p class="mini">Lern Deutsch mit Arash · arashguitoo.github.io</p>
+</div>
+
+<script>
+/* ===== EXERCISES DATA ===== */
+const TASKS = [
+  { type:"gap", qt:"als oder wenn?", prompt:"____ ich gestern aufwachte, schien die Sonne.",
+    options:["Als","Wenn","Während","Seit"], correct:0, exp:"einmalig + Vergangenheit → als." },
+  { type:"gap", qt:"als oder wenn?", prompt:"Immer ____ es regnet, nehme ich den Bus.",
+    options:["wenn","als","bis","bevor"], correct:0, exp:"wiederholt (immer …) → wenn." },
+  { type:"gap", qt:"als oder wenn?", prompt:"____ ich ein Kind war, wohnten wir in Köln.",
+    options:["Als","Wenn","Nachdem","Seit"], correct:0, exp:"einmaliger/durchgehender Zustand in der Vergangenheit → als." },
+  { type:"gap", qt:"als oder wenn?", prompt:"____ du Zeit hast, ruf mich bitte an.",
+    options:["Wenn","Als","Während","Bis"], correct:0, exp:"Gegenwart/Zukunft, mögliche Wiederholung → wenn." },
+  { type:"gap", qt:"während", prompt:"____ ich koche, hört meine Tochter Musik.",
+    options:["Während","Bevor","Nachdem","Seit"], correct:0, exp:"zwei Handlungen gleichzeitig → während." },
+  { type:"gap", qt:"bevor", prompt:"Ich putze mir die Zähne, ____ ich ins Bett gehe.",
+    options:["bevor","nachdem","seit","bis"], correct:0, exp:"das eine vor dem anderen → bevor." },
+  { type:"gap", qt:"nachdem", prompt:"____ wir gegessen hatten, gingen wir spazieren.",
+    options:["Nachdem","Bevor","Während","Seit"], correct:0, exp:"erst A fertig, dann B → nachdem (Plusquamperfekt + Präteritum)." },
+  { type:"gap", qt:"seit/seitdem", prompt:"____ ich in Kiel wohne, fahre ich jeden Tag Rad.",
+    options:["Seitdem","Bevor","Bis","Als"], correct:0, exp:"ab einem Startpunkt bis jetzt → seit/seitdem." },
+  { type:"gap", qt:"bis", prompt:"Warte hier, ____ ich zurückkomme.",
+    options:["bis","seit","während","nachdem"], correct:0, exp:"bis zu einem Endpunkt → bis." },
+  { type:"gap", qt:"bis", prompt:"Es dauert noch, ____ der Zug kommt.",
+    options:["bis","seit","bevor","als"], correct:0, exp:"Endpunkt in der Zukunft → bis." },
+  { type:"gap", qt:"nachdem", prompt:"____ der Film zu Ende war, gingen alle nach Hause.",
+    options:["Nachdem","Während","Seit","Wenn"], correct:0, exp:"erst zu Ende, dann die Folge → nachdem." },
+  { type:"gap", qt:"seit/seitdem", prompt:"____ dem Unfall hat er Angst vor dem Autofahren.",
+    options:["Seit","Bis","Bevor","Während"], correct:0, exp:"„seit“ + Nomen (Dativ): Startpunkt bis jetzt." },
+  { type:"gap", qt:"während", prompt:"____ des Studiums hat sie nebenbei gearbeitet.",
+    options:["Während","Bevor","Seit","Bis"], correct:0, exp:"„während“ + Nomen (Genitiv): gleichzeitiger Zeitraum." },
+  { type:"gap", qt:"bevor", prompt:"____ du gehst, mach bitte das Licht aus.",
+    options:["Bevor","Nachdem","Seit","Bis"], correct:0, exp:"das eine vor dem anderen → bevor." },
+  { type:"gap", qt:"als oder wenn?", prompt:"____ ich sie das erste Mal traf, war ich nervös.",
+    options:["Als","Wenn","Bis","Seit"], correct:0, exp:"einmaliges Ereignis in der Vergangenheit → als." },
+
+  { type:"mc", qt:"Bedeutung erkennen", prompt:"Welcher Konnektor zeigt einen Zeitraum vom Beginn bis jetzt?",
+    options:["seit / seitdem","bis","bevor","als"], correct:0, exp:"seit/seitdem = Startpunkt bis Gegenwart." },
+  { type:"mc", qt:"Bedeutung erkennen", prompt:"Welcher Konnektor zeigt zwei gleichzeitige Handlungen?",
+    options:["während","nachdem","bevor","bis"], correct:0, exp:"während = Gleichzeitigkeit." },
+  { type:"mc", qt:"Bedeutung erkennen", prompt:"Welcher Konnektor steht für ein einmaliges Ereignis in der Vergangenheit?",
+    options:["als","wenn","seit","bis"], correct:0, exp:"als = einmalig + Vergangenheit; wenn = wiederholt." },
+  { type:"mc", qt:"Bedeutung erkennen", prompt:"Welcher Konnektor markiert einen Endpunkt?",
+    options:["bis","seit","während","nachdem"], correct:0, exp:"bis = bis zu einem Schlusspunkt." },
+  { type:"mc", qt:"Fehler finden", prompt:"Welcher Satz ist FALSCH?",
+    options:["Wenn ich gestern ankam, war es dunkel.","Als ich gestern ankam, war es dunkel.","Immer wenn es regnet, bleibe ich zu Hause.","Während sie schlief, las er ein Buch."],
+    correct:0, exp:"Einmalig + Vergangenheit braucht „als“, nicht „wenn“." },
+  { type:"mc", qt:"Zeitform bei nachdem", prompt:"Welcher Satz ist korrekt?",
+    options:["Nachdem ich gegessen hatte, ging ich los.","Nachdem ich esse, ging ich los.","Nachdem ich gegessen habe, gehe ich gestern los.","Nachdem ich aß, hatte ich gegessen."],
+    correct:0, exp:"nachdem oft: Plusquamperfekt (hatte gegessen) + Präteritum (ging)." },
+
+  { type:"scramble", qt:"Satz bilden", prompt:"Bilde den Satz (Nebensatz zuerst).",
+    words:["Als","ich","klein","war",",","spielte","ich","oft","draußen","."],
+    answer:"Als ich klein war , spielte ich oft draußen ." },
+  { type:"scramble", qt:"Satz bilden", prompt:"Bilde den Satz.",
+    words:["Bevor","ich","schlafen","gehe",",","lese","ich","ein","Buch","."],
+    answer:"Bevor ich schlafen gehe , lese ich ein Buch ." },
+  { type:"scramble", qt:"Satz bilden", prompt:"Bilde den Satz.",
+    words:["Nachdem","wir","gegessen","hatten",",","tranken","wir","Kaffee","."],
+    answer:"Nachdem wir gegessen hatten , tranken wir Kaffee ." },
+  { type:"scramble", qt:"Satz bilden", prompt:"Bilde den Satz.",
+    words:["Seitdem","ich","Sport","mache",",","fühle","ich","mich","besser","."],
+    answer:"Seitdem ich Sport mache , fühle ich mich besser ." },
+  { type:"scramble", qt:"Satz bilden", prompt:"Bilde den Satz.",
+    words:["Während","sie","telefonierte",",","kochte","er","das","Essen","."],
+    answer:"Während sie telefonierte , kochte er das Essen ." },
+  { type:"scramble", qt:"Satz bilden", prompt:"Bilde den Satz.",
+    words:["Ich","bleibe","hier",",","bis","der","Regen","aufhört","."],
+    answer:"Ich bleibe hier , bis der Regen aufhört ." },
+
+  { type:"pair", qt:"Konnektor ↔ Bedeutung", prompt:"Verbinde Konnektor und Bedeutung.",
+    items:[ {l:"als", r:"einmalig, Vergangenheit"}, {l:"wenn", r:"wiederholt / Zukunft"},
+            {l:"während", r:"gleichzeitig"}, {l:"bis", r:"Endpunkt"} ] },
+  { type:"pair", qt:"Konnektor ↔ Bedeutung", prompt:"Verbinde Konnektor und Bedeutung.",
+    items:[ {l:"bevor", r:"das eine vor dem anderen"}, {l:"nachdem", r:"das eine nach dem anderen"},
+            {l:"seit/seitdem", r:"Beginn bis jetzt"}, {l:"während", r:"zur selben Zeit"} ] },
+  { type:"pair", qt:"Satzhälften", prompt:"Verbinde die passenden Satzhälften.",
+    items:[ {l:"Seitdem er hier arbeitet,", r:"ist er viel zufriedener."},
+            {l:"Bevor du gehst,", r:"schließ bitte das Fenster."},
+            {l:"Während ich lerne,", r:"höre ich keine Musik."},
+            {l:"Nachdem sie angekommen war,", r:"rief sie ihre Mutter an."} ] },
+];
+
+/* ===== ENGINE ===== */
+let stack = TASKS.slice();
+let pos=0, total=stack.length, wrong=0, answered=false, lastCorrect=false, sel=null, pairState=null, scrambleState=null;
+const exScreen=document.getElementById('exScreen');
+
+function updateScore(){
+  document.getElementById('scDone').textContent = pos;
+  document.getElementById('scTotal').textContent = total;
+  document.getElementById('scWrong').textContent = wrong;
+  document.getElementById('barFill').style.width = Math.round((pos/total)*100)+'%';
+}
+function render(){
+  updateScore();
+  if(pos>=stack.length){ renderEnd(); return; }
+  const t=stack[pos];
+  answered=false; sel=null; pairState=null; scrambleState=null;
+  let html='<div class="card"><div class="qtype">'+t.qt+'</div>';
+  html+='<p class="prompt">'+formatPrompt(t.prompt)+'</p>';
+  html+=renderBody(t);
+  html+='<div class="feedback" id="fb"></div>';
+  html+='<div class="actions"><button class="btn btn-primary" id="checkbtn" disabled>Prüfen</button>'+
+        '<button class="btn btn-primary hidden" id="nextbtn">Weiter →</button></div></div>';
+  exScreen.innerHTML=html;
+  wireBody(t);
+  document.getElementById('checkbtn').onclick=()=>check(t);
+  document.getElementById('nextbtn').onclick=()=>next(t);
+}
+function formatPrompt(p){ return p.replace(/____/g,'<span class="gap"></span>'); }
+function renderBody(t){
+  if(t.type==='mc'||t.type==='gap'){
+    return '<div class="opts">'+t.options.map((o,i)=>'<button class="opt" data-i="'+i+'">'+o+'</button>').join('')+'</div>';
+  }
+  if(t.type==='pair'){
+    const rights=shuffle(t.items.map((it,idx)=>({txt:it.r,idx})));
+    pairState={chosen:{}};
+    let h='<div class="pair-grid">';
+    t.items.forEach((it,li)=>{
+      h+='<div class="pair-row"><div class="pair-l">'+it.l+'</div><div class="pair-r-opts" data-li="'+li+'">';
+      rights.forEach(r=>{ h+='<button class="pair-r" data-li="'+li+'" data-ri="'+r.idx+'">'+r.txt+'</button>'; });
+      h+='</div></div>';
+    });
+    return h+'</div>';
+  }
+  if(t.type==='scramble'){
+    const bank=shuffleSeeded(t.words.map((w,i)=>({w,i})), hashStr(t.answer));
+    scrambleState={picked:[],bank};
+    let h='<div class="tokens empty" id="toks"></div><div class="bank" id="bank">';
+    bank.forEach((b,bi)=>{ h+='<button class="tok" data-bi="'+bi+'">'+b.w+'</button>'; });
+    return h+'</div>';
+  }
+  return '';
+}
+function wireBody(t){
+  if(t.type==='mc'||t.type==='gap'){
+    exScreen.querySelectorAll('.opt').forEach(b=>{
+      b.onclick=()=>{ if(answered)return;
+        exScreen.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));
+        b.classList.add('sel'); sel=+b.dataset.i;
+        document.getElementById('checkbtn').disabled=false; };
+    });
+  }
+  if(t.type==='pair'){
+    exScreen.querySelectorAll('.pair-r').forEach(b=>{
+      b.onclick=()=>{ if(answered)return;
+        const li=+b.dataset.li, ri=+b.dataset.ri;
+        const grp=exScreen.querySelector('.pair-r-opts[data-li="'+li+'"]');
+        grp.querySelectorAll('.pair-r').forEach(x=>x.classList.remove('sel'));
+        b.classList.add('sel'); pairState.chosen[li]=ri;
+        if(Object.keys(pairState.chosen).length===t.items.length) document.getElementById('checkbtn').disabled=false; };
+    });
+  }
+  if(t.type==='scramble') renderScramble(t);
+}
+function renderScramble(t){
+  const st=scrambleState, toks=document.getElementById('toks'), bank=document.getElementById('bank');
+  toks.innerHTML=''; toks.classList.toggle('empty', st.picked.length===0);
+  st.picked.forEach((bi,pi)=>{
+    const chip=document.createElement('button'); chip.className='chip'; chip.textContent=st.bank[bi].w;
+    chip.onclick=()=>{ if(answered)return; st.picked.splice(pi,1); renderScramble(t);
+      document.getElementById('checkbtn').disabled=st.picked.length===0; };
+    toks.appendChild(chip);
+  });
+  bank.querySelectorAll('.tok').forEach(b=>{ const bi=+b.dataset.bi;
+    b.classList.toggle('used', st.picked.includes(bi));
+    b.onclick=()=>{ if(answered)return; if(st.picked.includes(bi))return;
+      st.picked.push(bi); renderScramble(t); document.getElementById('checkbtn').disabled=false; };
+  });
+}
+function check(t){
+  if(answered)return;
+  let correct=false;
+  if(t.type==='mc'||t.type==='gap'){
+    correct=sel===t.correct;
+    exScreen.querySelectorAll('.opt').forEach((b,i)=>{ b.disabled=true;
+      if(i===t.correct)b.classList.add('correct'); else if(i===sel)b.classList.add('wrong'); });
+  } else if(t.type==='pair'){
+    correct=true;
+    t.items.forEach((it,li)=>{ if(pairState.chosen[li]!==li)correct=false; });
+    exScreen.querySelectorAll('.pair-r').forEach(b=>{ const li=+b.dataset.li, ri=+b.dataset.ri; b.disabled=true;
+      if(pairState.chosen[li]===ri) b.classList.add(ri===li?'correct':'wrong');
+      if(ri===li) b.classList.add('correct'); });
+  } else if(t.type==='scramble'){
+    const built=scrambleState.picked.map(bi=>scrambleState.bank[bi].w).join(' ');
+    correct=built===t.answer;
+    exScreen.querySelectorAll('.tok,.chip').forEach(c=>{ c.style.pointerEvents='none';
+      c.style.borderColor=correct?'var(--ok)':'var(--bad)'; c.style.background=correct?'var(--ok-bg)':'var(--bad-bg)'; });
+  }
+  answered=true; lastCorrect=correct;
+  if(!correct) wrong++;
+  const fb=document.getElementById('fb');
+  fb.className='feedback show '+(correct?'ok':'bad');
+  if(correct){ fb.innerHTML='<b>✓ Richtig!</b>'+(t.exp?'<span>'+t.exp+'</span>':''); }
+  else{
+    let sol = t.type==='scramble' ? ('Lösung: '+t.answer)
+      : (t.type==='pair' ? 'Achte auf die grünen Paare.'
+      : 'Richtig wäre: '+t.options[t.correct]);
+    fb.innerHTML='<b>✗ Noch nicht.</b><span>'+sol+(t.exp?' — '+t.exp:'')+'</span><br><span style="font-size:.8rem">Diese Aufgabe kommt am Ende noch einmal.</span>';
+  }
+  document.getElementById('checkbtn').classList.add('hidden');
+  document.getElementById('nextbtn').classList.remove('hidden');
+}
+function next(t){
+  if(!lastCorrect){ stack.push(t); total=stack.length; }
+  pos++; render();
+}
+function renderEnd(){
+  if(typeof window.goatcounter!=='undefined'){ try{ window.goatcounter.count({path:'grammatik-temporale-konnektoren-completed',title:'Temporale Konnektoren completed',event:true}); }catch(e){} }
+  updateScore();
+  exScreen.innerHTML='<div class="card endscreen"><div class="big">🎉</div>'+
+    '<h2>Geschafft!</h2><p>Du hast alle Aufgaben zu den temporalen Konnektoren gelöst.</p>'+
+    '<p style="color:var(--ink-soft)">Fehler unterwegs: '+wrong+'</p>'+
+    '<button class="restart" id="restart">Noch einmal üben</button></div>';
+  document.getElementById('restart').onclick=()=>{ stack=TASKS.slice(); pos=0; total=stack.length; wrong=0; render(); };
+}
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function shuffleSeeded(a,seed){ a=a.slice(); let s=seed||1; const r=()=>{ s=(s*1103515245+12345)&0x7fffffff; return s/0x7fffffff; };
+  for(let i=a.length-1;i>0;i--){ const j=Math.floor(r()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function hashStr(str){ let h=5381; for(let i=0;i<str.length;i++){ h=((h<<5)+h)+str.charCodeAt(i); h=h&0x7fffffff; } return h||1; }
+render();
+</script>
+</body>
+</html>

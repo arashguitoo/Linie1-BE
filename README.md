@@ -8,6 +8,7 @@ Teil von **Lern Deutsch mit Arash** (arashguitoo.github.io).
 - `cover.jpg` — Buchcover
 - `lektion1-uebung.html` — Lektion 1 „Eine neue Stelle", 4 Module à 30 Aufgaben
 - `grammatik-perfekt.html` — Grammatik-Wiederholung „Das Perfekt": Erklärung + 30 gemischte Übungen
+- `grammatik-temporale-konnektoren.html` — Temporale Konnektoren: Schaubild (Zeitachse) + 30 Übungen
 
 ## Lektion 1 — Module
 1. Sich vorstellen & Profil

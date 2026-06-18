@@ -27,6 +27,11 @@
     display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:20px;box-shadow:var(--shadow)}
   header.top h1{font-size:1.05rem;margin:0;font-weight:800}
   header.top p{margin:0;font-size:.78rem;color:var(--ink-soft)}
+  header.top .head-txt{flex:1;min-width:0}
+  header.top .homebtn{flex:0 0 auto;width:42px;height:42px;border-radius:12px;background:#fff;
+    border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;
+    font-size:1.2rem;text-decoration:none;box-shadow:var(--shadow);transition:transform .12s}
+  header.top .homebtn:active{transform:scale(.94)}
   .backbtn{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--line);
     color:var(--accent-deep);font-weight:700;font-size:.88rem;padding:8px 13px;border-radius:999px;cursor:pointer;text-decoration:none;margin-bottom:14px}
   /* explanation */
@@ -105,10 +110,11 @@
 <div class="wrap">
   <header class="top">
     <div class="logo">A</div>
-    <div>
+    <div class="head-txt">
       <h1>Grammatik: Das Perfekt</h1>
       <p>einfach erklärt · Lern Deutsch mit Arash</p>
     </div>
+    <a class="homebtn" href="index.html" title="Zur Startseite" aria-label="Zur Startseite">🏠</a>
   </header>
   <a class="backbtn" href="index.html">← Zurück zur Startseite</a>
 
