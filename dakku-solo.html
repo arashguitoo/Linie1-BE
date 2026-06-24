@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dativ & Akkusativ verstehen — Zusatzlektion | Lern Deutsch mit Arash</title>
+<script data-goatcounter="https://aguitoo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<style>
+  :root{
+    --accent:#0e7c86;        /* Petrol-Türkis, eigener Look */
+    --accent-deep:#0a5b63;
+    --accent-soft:#d6f0f1;
+    --paper:#eef7f7;
+    --ink:#1f2a2b; --ink-soft:#5a6b6c;
+    --ok:#3f8f4f; --ok-bg:#e6f4e8; --bad:#c0392b; --bad-bg:#fbe7e4;
+    --warn-bg:#fff5e0; --warn-bd:#f0cf8a; --warn-ink:#9a6b12;
+    --card:#fff; --line:#cfe6e6; --shadow:0 6px 24px rgba(14,90,99,.12);
+    --b1:#d85a30; --b2:#378add; --b3:#7a4d8c;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:linear-gradient(160deg,var(--paper),#f5fbfb);color:var(--ink);line-height:1.55}
+  .wrap{max-width:720px;margin:0 auto;padding:18px 16px 64px}
+  header.top{display:flex;align-items:center;gap:12px;padding:6px 0 14px}
+  header.top .logo{width:42px;height:42px;border-radius:12px;background:var(--accent);
+    display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:20px;box-shadow:var(--shadow)}
+  header.top .head-txt{flex:1;min-width:0}
+  header.top h1{font-size:1.05rem;margin:0;font-weight:800}
+  header.top p{margin:0;font-size:.78rem;color:var(--ink-soft)}
+  header.top .homebtn{flex:0 0 auto;width:42px;height:42px;border-radius:12px;background:#fff;
+    border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;
+    font-size:1.2rem;text-decoration:none;box-shadow:var(--shadow)}
+  .backbtn{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--line);
+    color:var(--accent-deep);font-weight:700;font-size:.88rem;padding:8px 13px;border-radius:999px;text-decoration:none;margin-bottom:14px}
+  /* module nav */
+  .modnav{display:flex;gap:8px;margin-bottom:18px}
+  .modnav button{flex:1;background:#fff;border:1.5px solid var(--line);border-radius:13px;padding:10px 6px;
+    cursor:pointer;font-weight:700;font-size:.82rem;color:var(--ink-soft);transition:.12s}
+  .modnav button .em{display:block;font-size:1.3rem;margin-bottom:2px}
+  .modnav button.active{border-color:var(--accent);color:var(--accent-deep);background:var(--accent-soft)}
+  .modnav button.done{border-color:var(--ok)}
+  .modnav button.done .em::after{content:" ✓";color:var(--ok);font-size:.9rem}
+  /* intro */
+  .intro-card{background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--shadow);margin-bottom:14px}
+  .intro-card h2{margin:0 0 4px;font-size:1.3rem;color:var(--accent-deep)}
+  .intro-card .mt{color:var(--ink-soft);font-size:.9rem;margin:0 0 8px}
+  .panel{border-left:3px solid var(--accent);background:#f6fbfb;border-radius:0 12px 12px 0;padding:12px 15px;margin:12px 0}
+  .panel h3{margin:0 0 5px;font-size:1.02rem;color:var(--accent-deep)}
+  .panel p{margin:0;font-size:.95rem}
+  .panel .tag{display:inline-block;margin-top:9px;background:var(--accent-soft);color:var(--accent-deep);
+    font-size:.78rem;font-weight:700;padding:3px 10px;border-radius:99px}
+  .panel.warn{border-left-color:var(--warn-bd);background:var(--warn-bg)}
+  .panel.warn h3{color:var(--warn-ink)}
+  .panel.warn .tag{background:#f6e4bf;color:var(--warn-ink)}
+  .legs-svg{width:100%;height:auto;display:block;margin:6px 0 2px}
+  .startbtn{width:100%;border:none;border-radius:13px;padding:15px;font-size:1.05rem;font-weight:800;
+    background:var(--accent);color:#fff;cursor:pointer;margin-top:6px}
+  /* exercises */
+  .scoreboard{display:flex;gap:10px;margin-bottom:14px}
+  .score-pill{flex:1;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:10px;text-align:center;box-shadow:var(--shadow)}
+  .score-pill .n{font-size:1.4rem;font-weight:800;color:var(--accent-deep)}
+  .score-pill .l{font-size:.72rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em}
+  .bar{height:9px;background:#e3eded;border-radius:99px;overflow:hidden;margin-bottom:16px}
+  .bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-deep));width:0;transition:width .35s}
+  .card{background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--shadow)}
+  .qtype{font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin-bottom:8px}
+  .prompt{font-size:1.1rem;font-weight:700;margin:0 0 16px}
+  .prompt .gap{color:var(--accent-deep);border-bottom:2px dashed var(--accent);padding:0 18px}
+  .opts{display:flex;flex-direction:column;gap:10px}
+  .opt{display:block;width:100%;text-align:left;background:#fff;border:2px solid var(--line);border-radius:13px;
+    padding:13px 15px;font-size:1rem;cursor:pointer;transition:.12s;color:var(--ink)}
+  .opt.sel{border-color:var(--accent)}
+  .opt.correct{border-color:var(--ok);background:var(--ok-bg)}
+  .opt.wrong{border-color:var(--bad);background:var(--bad-bg)}
+  .opt:disabled{cursor:default}
+  .tokens{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;min-height:46px;border:2px dashed var(--line);border-radius:13px;padding:11px;background:#fafdfd}
+  .tokens.empty::before{content:"Tippe die Wörter in der richtigen Reihenfolge an …";color:var(--ink-soft);font-size:.85rem}
+  .bank{display:flex;flex-wrap:wrap;gap:8px}
+  .tok{background:#fff;border:2px solid var(--line);border-radius:10px;padding:9px 13px;font-size:.96rem;cursor:pointer}
+  .tok.used{opacity:.32;pointer-events:none}
+  .chip{background:var(--accent-soft);border:2px solid var(--accent);border-radius:10px;padding:9px 13px;font-size:.96rem;cursor:pointer}
+  .pair-grid{display:flex;flex-direction:column;gap:10px}
+  .pair-row{display:flex;gap:8px;align-items:center}
+  .pair-l{flex:0 0 44%;background:var(--accent-soft);border-radius:11px;padding:11px 12px;font-weight:600;font-size:.92rem}
+  .pair-r-opts{flex:1;display:flex;flex-direction:column;gap:6px}
+  .pair-r{background:#fff;border:2px solid var(--line);border-radius:10px;padding:9px 11px;font-size:.88rem;cursor:pointer}
+  .pair-r.sel{border-color:var(--accent)}
+  .pair-r.correct{border-color:var(--ok);background:var(--ok-bg)}
+  .pair-r.wrong{border-color:var(--bad);background:var(--bad-bg)}
+  .pair-r:disabled{cursor:default}
+  .feedback{margin-top:15px;padding:13px 15px;border-radius:12px;font-size:.93rem;display:none}
+  .feedback.show{display:block}
+  .feedback.ok{background:var(--ok-bg);color:#256b34}
+  .feedback.bad{background:var(--bad-bg);color:#922}
+  .feedback b{display:block;margin-bottom:3px}
+  .actions{margin-top:16px;display:flex;gap:10px}
+  .btn{flex:1;border:none;border-radius:13px;padding:14px;font-size:1rem;font-weight:800;cursor:pointer}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:disabled{background:#bcdada;cursor:default}
+  .btn-ghost{background:#fff;border:2px solid var(--line);color:var(--accent-deep)}
+  .endscreen{text-align:center;padding:14px 6px}
+  .endscreen .big{font-size:3rem}
+  .mini{font-size:.78rem;color:var(--ink-soft);text-align:center;margin-top:22px}
+  .hidden{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="logo">A</div>
+    <div class="head-txt">
+      <h1>Dativ &amp; Akkusativ verstehen</h1>
+      <p>Zusatzlektion · Lern Deutsch mit Arash</p>
+    </div>
+    <a class="homebtn" href="index.html" title="Zur Startseite" aria-label="Zur Startseite">🏠</a>
+  </header>
+  <a class="backbtn" href="index.html">← Zurück zur Startseite</a>
+
+  <div class="modnav" id="modnav"></div>
+  <div id="screen"></div>
+
+  <p class="mini">Lern Deutsch mit Arash · arashguitoo.github.io</p>
+</div>
+
+<script src="dakku-data.js"></script>
+<script>
+/* ===== Beine-SVG (nur Modul 1) ===== */
+function legsSVG(){
+  return `<svg class="legs-svg" viewBox="0 0 660 200" role="img" aria-label="Tische mit ein, zwei und drei Beinen als Bild für Nominativ, Akkusativ und Dativ">
+    <!-- 1 Bein -->
+    <g>
+      <rect x="40" y="40" width="120" height="14" rx="4" fill="#d85a30"/>
+      <rect x="94" y="54" width="10" height="70" fill="#d85a30"/>
+      <text x="100" y="150" text-anchor="middle" font-size="15" font-weight="700" fill="#0a5b63">1 Bein</text>
+      <text x="100" y="170" text-anchor="middle" font-size="12" fill="#5a6b6c">Nominativ</text>
+      <text x="100" y="186" text-anchor="middle" font-size="11" fill="#5a6b6c">schlafen, kommen</text>
+    </g>
+    <!-- 2 Beine -->
+    <g>
+      <rect x="270" y="40" width="120" height="14" rx="4" fill="#378add"/>
+      <rect x="288" y="54" width="10" height="70" fill="#378add"/>
+      <rect x="362" y="54" width="10" height="70" fill="#378add"/>
+      <text x="330" y="150" text-anchor="middle" font-size="15" font-weight="700" fill="#0a5b63">2 Beine</text>
+      <text x="330" y="170" text-anchor="middle" font-size="12" fill="#5a6b6c">Nom + Akkusativ</text>
+      <text x="330" y="186" text-anchor="middle" font-size="11" fill="#5a6b6c">haben, kaufen, sehen</text>
+    </g>
+    <!-- 3 Beine -->
+    <g>
+      <rect x="500" y="40" width="120" height="14" rx="4" fill="#7a4d8c"/>
+      <rect x="516" y="54" width="10" height="70" fill="#7a4d8c"/>
+      <rect x="555" y="54" width="10" height="70" fill="#7a4d8c"/>
+      <rect x="594" y="54" width="10" height="70" fill="#7a4d8c"/>
+      <text x="560" y="150" text-anchor="middle" font-size="15" font-weight="700" fill="#0a5b63">3 Beine</text>
+      <text x="560" y="170" text-anchor="middle" font-size="12" fill="#5a6b6c">Nom + Dativ + Akk</text>
+      <text x="560" y="186" text-anchor="middle" font-size="11" fill="#5a6b6c">geben, schenken, zeigen</text>
+    </g>
+  </svg>`;
+}
+
+/* ===== State ===== */
+const STORE='dakku-solo-done';
+let done = JSON.parse(localStorage.getItem(STORE)||'{}');
+let curMod=0, view='intro';
+let stack=[],pos=0,total=0,wrong=0,answered=false,lastCorrect=false,sel=null,pairState=null,scrambleState=null;
+const screen=document.getElementById('screen');
+
+function renderNav(){
+  const nav=document.getElementById('modnav');
+  nav.innerHTML='';
+  LESSON.modules.forEach((m,i)=>{
+    const b=document.createElement('button');
+    b.className='modnav-btn'+(i===curMod?' active':'')+(done[m.id]?' done':'');
+    b.innerHTML='<span class="em">'+m.icon+'</span>'+m.title;
+    b.onclick=()=>{ curMod=i; view='intro'; renderNav(); renderIntro(); };
+    nav.appendChild(b);
+  });
+}
+
+function renderIntro(){
+  const m=LESSON.modules[curMod];
+  let html='<div class="intro-card"><h2>'+m.icon+' '+m.title+'</h2>';
+  html+='<p class="mt">Lies zuerst die Erklärung. Danach kommen die Übungen.</p>';
+  if(m.id==='beine') html+=legsSVG();
+  m.intro.forEach(s=>{
+    html+='<div class="panel'+(s.warn?' warn':'')+'"><h3>'+s.h+'</h3><p>'+s.p+'</p>'+
+          (s.tag?'<span class="tag">'+s.tag+'</span>':'')+'</div>';
+  });
+  html+='<button class="startbtn" id="start">Übungen starten ('+m.tasks.length+') →</button></div>';
+  screen.innerHTML=html;
+  document.getElementById('start').onclick=()=>startEx();
+}
+
+function startEx(){
+  const m=LESSON.modules[curMod];
+  stack=m.tasks.slice(); pos=0; total=stack.length; wrong=0; view='ex';
+  renderEx();
+}
+function renderEx(){
+  if(pos>=stack.length){ renderEnd(); return; }
+  const t=stack[pos];
+  answered=false; sel=null; pairState=null; scrambleState=null;
+  const pct=Math.round((pos/total)*100);
+  let html='<div class="scoreboard">'+
+    '<div class="score-pill"><div class="n">'+pos+'</div><div class="l">gelöst</div></div>'+
+    '<div class="score-pill"><div class="n">'+total+'</div><div class="l">gesamt</div></div>'+
+    '<div class="score-pill"><div class="n">'+wrong+'</div><div class="l">Fehler</div></div></div>'+
+    '<div class="bar"><i style="width:'+pct+'%"></i></div>';
+  html+='<div class="card"><div class="qtype">'+t.qt+'</div><p class="prompt">'+fmt(t.prompt)+'</p>'+body(t)+
+        '<div class="feedback" id="fb"></div><div class="actions">'+
+        '<button class="btn btn-primary" id="checkbtn" disabled>Prüfen</button>'+
+        '<button class="btn btn-primary hidden" id="nextbtn">Weiter →</button></div></div>';
+  screen.innerHTML=html;
+  wire(t);
+  document.getElementById('checkbtn').onclick=()=>check(t);
+  document.getElementById('nextbtn').onclick=()=>nextEx(t);
+}
+function fmt(p){ return p.replace(/____/g,'<span class="gap"></span>'); }
+function body(t){
+  if(t.type==='mc'||t.type==='gap')
+    return '<div class="opts">'+t.options.map((o,i)=>'<button class="opt" data-i="'+i+'">'+o+'</button>').join('')+'</div>';
+  if(t.type==='pair'){
+    const rights=shuffle(t.items.map((it,idx)=>({txt:it.r,idx})));
+    pairState={chosen:{}};
+    let h='<div class="pair-grid">';
+    t.items.forEach((it,li)=>{ h+='<div class="pair-row"><div class="pair-l">'+it.l+'</div><div class="pair-r-opts" data-li="'+li+'">';
+      rights.forEach(r=>{ h+='<button class="pair-r" data-li="'+li+'" data-ri="'+r.idx+'">'+r.txt+'</button>'; }); h+='</div></div>'; });
+    return h+'</div>';
+  }
+  if(t.type==='scramble'){
+    const bank=shuffleSeeded(t.words.map((w,i)=>({w,i})), hashStr(t.answer));
+    scrambleState={picked:[],bank};
+    let h='<div class="tokens empty" id="toks"></div><div class="bank" id="bank">';
+    bank.forEach((b,bi)=>{ h+='<button class="tok" data-bi="'+bi+'">'+b.w+'</button>'; });
+    return h+'</div>';
+  }
+  return '';
+}
+function wire(t){
+  if(t.type==='mc'||t.type==='gap'){
+    screen.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{ if(answered)return;
+      screen.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));
+      b.classList.add('sel'); sel=+b.dataset.i; document.getElementById('checkbtn').disabled=false; });
+  }
+  if(t.type==='pair'){
+    screen.querySelectorAll('.pair-r').forEach(b=>b.onclick=()=>{ if(answered)return;
+      const li=+b.dataset.li, ri=+b.dataset.ri;
+      screen.querySelector('.pair-r-opts[data-li="'+li+'"]').querySelectorAll('.pair-r').forEach(x=>x.classList.remove('sel'));
+      b.classList.add('sel'); pairState.chosen[li]=ri;
+      if(Object.keys(pairState.chosen).length===t.items.length) document.getElementById('checkbtn').disabled=false; });
+  }
+  if(t.type==='scramble') renderScramble(t);
+}
+function renderScramble(t){
+  const st=scrambleState, toks=document.getElementById('toks'), bank=document.getElementById('bank');
+  toks.innerHTML=''; toks.classList.toggle('empty', st.picked.length===0);
+  st.picked.forEach((bi,pi)=>{ const c=document.createElement('button'); c.className='chip'; c.textContent=st.bank[bi].w;
+    c.onclick=()=>{ if(answered)return; st.picked.splice(pi,1); renderScramble(t); document.getElementById('checkbtn').disabled=st.picked.length===0; };
+    toks.appendChild(c); });
+  bank.querySelectorAll('.tok').forEach(b=>{ const bi=+b.dataset.bi; b.classList.toggle('used', st.picked.includes(bi));
+    b.onclick=()=>{ if(answered)return; if(st.picked.includes(bi))return; st.picked.push(bi); renderScramble(t); document.getElementById('checkbtn').disabled=false; }; });
+}
+function check(t){
+  if(answered)return; let correct=false;
+  if(t.type==='mc'||t.type==='gap'){ correct=sel===t.correct;
+    screen.querySelectorAll('.opt').forEach((b,i)=>{ b.disabled=true; if(i===t.correct)b.classList.add('correct'); else if(i===sel)b.classList.add('wrong'); });
+  } else if(t.type==='pair'){ correct=true;
+    t.items.forEach((it,li)=>{ if(pairState.chosen[li]!==li)correct=false; });
+    screen.querySelectorAll('.pair-r').forEach(b=>{ const li=+b.dataset.li, ri=+b.dataset.ri; b.disabled=true;
+      if(pairState.chosen[li]===ri) b.classList.add(ri===li?'correct':'wrong'); if(ri===li) b.classList.add('correct'); });
+  } else if(t.type==='scramble'){ const built=scrambleState.picked.map(bi=>scrambleState.bank[bi].w).join(' ');
+    correct=built===t.answer;
+    screen.querySelectorAll('.tok,.chip').forEach(c=>{ c.style.pointerEvents='none'; c.style.borderColor=correct?'var(--ok)':'var(--bad)'; c.style.background=correct?'var(--ok-bg)':'var(--bad-bg)'; });
+  }
+  answered=true; lastCorrect=correct; if(!correct) wrong++;
+  const fb=document.getElementById('fb'); fb.className='feedback show '+(correct?'ok':'bad');
+  if(correct){ fb.innerHTML='<b>✓ Richtig!</b>'+(t.exp?'<span>'+t.exp+'</span>':''); }
+  else{ let sol = t.type==='scramble'?('Lösung: '+t.answer):(t.type==='pair'?'Achte auf die grünen Paare.':'Richtig wäre: '+t.options[t.correct]);
+    fb.innerHTML='<b>✗ Noch nicht.</b><span>'+sol+(t.exp?' — '+t.exp:'')+'</span><br><span style="font-size:.8rem">Diese Aufgabe kommt am Ende noch einmal.</span>'; }
+  document.getElementById('checkbtn').classList.add('hidden');
+  document.getElementById('nextbtn').classList.remove('hidden');
+}
+function nextEx(t){ if(!lastCorrect){ stack.push(t); total=stack.length; } pos++; renderEx(); }
+function renderEnd(){
+  const m=LESSON.modules[curMod]; done[m.id]=true; localStorage.setItem(STORE,JSON.stringify(done));
+  if(typeof window.goatcounter!=='undefined'){ try{ window.goatcounter.count({path:'dakku-'+m.id+'-completed',title:'DAKKU '+m.id+' completed',event:true}); }catch(e){} }
+  renderNav();
+  const next = curMod<LESSON.modules.length-1 ? LESSON.modules[curMod+1] : null;
+  let html='<div class="card endscreen"><div class="big">🎉</div><h2>'+m.title+' geschafft!</h2>'+
+    '<p>Alle Aufgaben gelöst. Fehler unterwegs: '+wrong+'</p><div class="actions">'+
+    '<button class="btn btn-ghost" id="again">Noch einmal</button>';
+  if(next) html+='<button class="btn btn-primary" id="nextmod">Weiter: '+next.icon+' '+next.title+' →</button>';
+  else html+='<button class="btn btn-primary" id="home2">Zur Übersicht</button>';
+  html+='</div></div>';
+  screen.innerHTML=html;
+  document.getElementById('again').onclick=()=>startEx();
+  if(next) document.getElementById('nextmod').onclick=()=>{ curMod++; renderNav(); renderIntro(); window.scrollTo(0,0); };
+  else document.getElementById('home2').onclick=()=>{ curMod=0; renderNav(); renderIntro(); window.scrollTo(0,0); };
+}
+/* utils */
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function shuffleSeeded(a,seed){ a=a.slice(); let s=seed||1; const r=()=>{ s=(s*1103515245+12345)&0x7fffffff; return s/0x7fffffff; };
+  for(let i=a.length-1;i>0;i--){ const j=Math.floor(r()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function hashStr(str){ let h=5381; for(let i=0;i<str.length;i++){ h=((h<<5)+h)+str.charCodeAt(i); h=h&0x7fffffff; } return h||1; }
+
+renderNav(); renderIntro();
+</script>
+</body>
+</html>

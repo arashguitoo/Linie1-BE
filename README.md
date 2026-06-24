@@ -26,3 +26,9 @@ Teil von **Lern Deutsch mit Arash** (arashguitoo.github.io).
 
 ## Deployment
 Alle Dateien aus diesem Ordner ins GitHub-Pages-Repo legen. Keine Build-Schritte nötig.
+
+## Zusatzlektion: Dativ & Akkusativ
+- `dakku-solo.html` — Solo-Lektion (Beine-Methode, feste Präpositionen, Reflexivpronomen): 3 Module, 60 Übungen, kein Login
+- `dakku-live.html` — Live-Klassenraum mit Firebase: Lehrkraft startet Session, TN treten mit Code bei, Fortschritt live
+- `dakku-data.js` — gemeinsame Inhalte/Aufgaben für beide Versionen (muss im selben Ordner liegen)
+- `dakku-anleitung.md` — Kurzanleitung für die Live-Stunde

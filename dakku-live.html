@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dativ & Akkusativ — Live-Klassenraum | Lern Deutsch mit Arash</title>
+<script data-goatcounter="https://aguitoo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<style>
+  :root{
+    --accent:#0e7c86; --accent-deep:#0a5b63; --accent-soft:#d6f0f1;
+    --paper:#eef7f7; --ink:#1f2a2b; --ink-soft:#5a6b6c;
+    --ok:#3f8f4f; --ok-bg:#e6f4e8; --bad:#c0392b; --bad-bg:#fbe7e4;
+    --warn-bg:#fff5e0; --warn-bd:#f0cf8a; --warn-ink:#9a6b12;
+    --card:#fff; --line:#cfe6e6; --shadow:0 6px 24px rgba(14,90,99,.12);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:linear-gradient(160deg,var(--paper),#f5fbfb);color:var(--ink);line-height:1.55}
+  .wrap{max-width:760px;margin:0 auto;padding:18px 16px 64px}
+  header.top{display:flex;align-items:center;gap:12px;padding:6px 0 14px}
+  header.top .logo{width:42px;height:42px;border-radius:12px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:20px;box-shadow:var(--shadow)}
+  header.top .head-txt{flex:1;min-width:0}
+  header.top h1{font-size:1.05rem;margin:0;font-weight:800}
+  header.top p{margin:0;font-size:.78rem;color:var(--ink-soft)}
+  header.top .homebtn{flex:0 0 auto;width:42px;height:42px;border-radius:12px;background:#fff;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:1.2rem;text-decoration:none;box-shadow:var(--shadow)}
+  .backbtn{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--line);color:var(--accent-deep);font-weight:700;font-size:.88rem;padding:8px 13px;border-radius:999px;text-decoration:none;margin-bottom:14px}
+  .card{background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--shadow);margin-bottom:14px}
+  h2{color:var(--accent-deep);font-size:1.25rem;margin:.1em 0 .4em}
+  .role-grid{display:flex;gap:12px;flex-wrap:wrap}
+  .role-btn{flex:1;min-width:200px;background:#fff;border:2px solid var(--line);border-radius:16px;padding:22px;cursor:pointer;text-align:center;transition:.12s}
+  .role-btn:active{transform:scale(.99)}
+  .role-btn .em{font-size:2.4rem;display:block;margin-bottom:6px}
+  .role-btn h3{margin:0 0 4px;color:var(--accent-deep)}
+  .role-btn p{margin:0;font-size:.85rem;color:var(--ink-soft)}
+  input,select{width:100%;padding:13px 15px;border:2px solid var(--line);border-radius:12px;font-size:1rem;margin:8px 0}
+  .code-input{text-transform:uppercase;letter-spacing:.2em;text-align:center;font-family:ui-monospace,monospace;font-size:1.3rem}
+  .btn{border:none;border-radius:13px;padding:14px;font-size:1rem;font-weight:800;cursor:pointer;width:100%}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:disabled{background:#bcdada}
+  .btn-ghost{background:#fff;border:2px solid var(--line);color:var(--accent-deep)}
+  .codebox{background:var(--accent);color:#fff;border-radius:16px;padding:18px;text-align:center;margin:6px 0 14px}
+  .codebox .lab{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;opacity:.9}
+  .codebox .code{font-size:2.6rem;font-weight:800;letter-spacing:.2em;font-family:ui-monospace,monospace}
+  .seg{display:flex;gap:6px;margin-bottom:14px}
+  .seg button{flex:1;background:#fff;border:1.5px solid var(--line);border-radius:11px;padding:9px 4px;font-weight:700;font-size:.82rem;color:var(--ink-soft);cursor:pointer}
+  .seg button.active{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-deep)}
+  table{width:100%;border-collapse:collapse;font-size:.9rem}
+  th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line)}
+  th{color:var(--accent-deep);font-size:.8rem;text-transform:uppercase;letter-spacing:.03em}
+  .pbar{height:8px;background:#e3eded;border-radius:99px;overflow:hidden;min-width:80px}
+  .pbar > i{display:block;height:100%;background:var(--accent)}
+  .muted{color:var(--ink-soft);font-size:.85rem}
+  .pill{display:inline-block;padding:2px 9px;border-radius:99px;font-size:.76rem;font-weight:700}
+  .pill.live{background:var(--ok-bg);color:#256b34}
+  .pill.idle{background:#eee;color:#777}
+  .stat-row{display:flex;gap:10px;margin-bottom:14px}
+  .stat{flex:1;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:12px;text-align:center}
+  .stat .n{font-size:1.6rem;font-weight:800;color:var(--accent-deep)}
+  .stat .l{font-size:.72rem;color:var(--ink-soft);text-transform:uppercase}
+  /* exercise (student) reuse */
+  .qtype{font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin-bottom:8px}
+  .prompt{font-size:1.1rem;font-weight:700;margin:0 0 16px}
+  .prompt .gap{color:var(--accent-deep);border-bottom:2px dashed var(--accent);padding:0 18px}
+  .opts{display:flex;flex-direction:column;gap:10px}
+  .opt{display:block;width:100%;text-align:left;background:#fff;border:2px solid var(--line);border-radius:13px;padding:13px 15px;font-size:1rem;cursor:pointer;color:var(--ink)}
+  .opt.sel{border-color:var(--accent)} .opt.correct{border-color:var(--ok);background:var(--ok-bg)} .opt.wrong{border-color:var(--bad);background:var(--bad-bg)}
+  .opt:disabled{cursor:default}
+  .tokens{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;min-height:46px;border:2px dashed var(--line);border-radius:13px;padding:11px;background:#fafdfd}
+  .bank{display:flex;flex-wrap:wrap;gap:8px}
+  .tok{background:#fff;border:2px solid var(--line);border-radius:10px;padding:9px 13px;cursor:pointer}
+  .tok.used{opacity:.32;pointer-events:none}
+  .chip{background:var(--accent-soft);border:2px solid var(--accent);border-radius:10px;padding:9px 13px;cursor:pointer}
+  .pair-grid{display:flex;flex-direction:column;gap:10px}
+  .pair-row{display:flex;gap:8px;align-items:center}
+  .pair-l{flex:0 0 44%;background:var(--accent-soft);border-radius:11px;padding:11px 12px;font-weight:600;font-size:.92rem}
+  .pair-r-opts{flex:1;display:flex;flex-direction:column;gap:6px}
+  .pair-r{background:#fff;border:2px solid var(--line);border-radius:10px;padding:9px 11px;font-size:.88rem;cursor:pointer}
+  .pair-r.sel{border-color:var(--accent)} .pair-r.correct{border-color:var(--ok);background:var(--ok-bg)} .pair-r.wrong{border-color:var(--bad);background:var(--bad-bg)}
+  .feedback{margin-top:15px;padding:13px 15px;border-radius:12px;font-size:.93rem;display:none}
+  .feedback.show{display:block} .feedback.ok{background:var(--ok-bg);color:#256b34} .feedback.bad{background:var(--bad-bg);color:#922}
+  .feedback b{display:block;margin-bottom:3px}
+  .actions{margin-top:16px;display:flex;gap:10px}
+  .panel{border-left:3px solid var(--accent);background:#f6fbfb;border-radius:0 12px 12px 0;padding:12px 15px;margin:12px 0}
+  .panel.warn{border-left-color:var(--warn-bd);background:var(--warn-bg)}
+  .panel h3{margin:0 0 5px;font-size:1rem;color:var(--accent-deep)}
+  .panel.warn h3{color:var(--warn-ink)} .panel p{margin:0;font-size:.93rem}
+  .mini{font-size:.78rem;color:var(--ink-soft);text-align:center;margin-top:22px}
+  .hidden{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="logo">A</div>
+    <div class="head-txt">
+      <h1>Dativ &amp; Akkusativ — Live-Klassenraum</h1>
+      <p>Mit Firebase · Lern Deutsch mit Arash</p>
+    </div>
+    <a class="homebtn" href="index.html" title="Zur Startseite" aria-label="Zur Startseite">🏠</a>
+  </header>
+  <a class="backbtn" href="index.html">← Zurück zur Startseite</a>
+  <div id="app"></div>
+  <p class="mini">Lern Deutsch mit Arash · arashguitoo.github.io</p>
+</div>
+
+<script src="dakku-data.js"></script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getDatabase, ref, set, update, onValue, get, child }
+  from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBDChXlm34Kr7Gg0Dw458GiiwoLnWJAnxM",
+  authDomain: "lern-deutsch-arash.firebaseapp.com",
+  databaseURL: "https://lern-deutsch-arash-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "lern-deutsch-arash",
+  storageBucket: "lern-deutsch-arash.firebasestorage.app",
+  messagingSenderId: "845503292114",
+  appId: "1:845503292114:web:f76ab5fcde1e978d00c30b"
+};
+const fbApp = initializeApp(firebaseConfig);
+const db = getDatabase(fbApp);
+const ROOT = "dakku_sessions";
+
+const app = document.getElementById('app');
+const allTasks = LESSON.modules.flatMap(m => m.tasks.map(t => ({...t, _mod:m.id})));
+const TASKS_PER_MOD = LESSON.modules.map(m=>m.tasks.length);
+const GRAND_TOTAL = allTasks.length;
+
+/* ============ ROLE CHOOSER ============ */
+function renderRoles(){
+  app.innerHTML = `<div class="card"><h2>Wie möchtest du teilnehmen?</h2>
+    <div class="role-grid">
+      <div class="role-btn" id="r-teach"><span class="em">🖥️</span><h3>Lehrkraft</h3><p>Session starten und Fortschritt aller live verfolgen</p></div>
+      <div class="role-btn" id="r-stud"><span class="em">📱</span><h3>Teilnehmer:in</h3><p>Mit Code beitreten und die Übungen machen</p></div>
+    </div></div>
+    <div class="card"><p class="muted">Tipp: Die Solo-Version ohne Anmeldung gibt es separat — diese Seite ist für den Live-Kurs gedacht.</p></div>`;
+  document.getElementById('r-teach').onclick = teacherStart;
+  document.getElementById('r-stud').onclick = studentJoin;
+}
+
+/* ============ TEACHER ============ */
+function code4(){ const c="ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; let s=""; for(let i=0;i<4;i++) s+=c[Math.floor(Math.random()*c.length)]; return s; }
+
+async function teacherStart(){
+  const codeVal = code4();
+  await set(ref(db, `${ROOT}/${codeVal}`), {
+    createdAt: Date.now(),
+    activeModule: "all",
+    students: {}
+  });
+  teacherDash(codeVal);
+}
+
+function teacherDash(codeVal){
+  let tab = "live";
+  function paint(data){
+    const students = data && data.students ? Object.entries(data.students) : [];
+    let html = `<div class="card">
+      <div class="codebox"><div class="lab">Session-Code für die Teilnehmer</div><div class="code">${codeVal}</div></div>
+      <div class="stat-row">
+        <div class="stat"><div class="n">${students.length}</div><div class="l">beigetreten</div></div>
+        <div class="stat"><div class="n">${students.filter(([k,s])=>s.online).length}</div><div class="l">online</div></div>
+        <div class="stat"><div class="n">${students.filter(([k,s])=>(s.solved||0)>=GRAND_TOTAL).length}</div><div class="l">fertig</div></div>
+      </div>
+      <div class="seg">
+        <button data-t="live" class="${tab==='live'?'active':''}">Live-Fortschritt</button>
+        <button data-t="modules" class="${tab==='modules'?'active':''}">Pro Modul</button>
+        <button data-t="trouble" class="${tab==='trouble'?'active':''}">Schwierige Aufgaben</button>
+      </div>`;
+
+    if(students.length===0){
+      html += `<p class="muted">Noch niemand beigetreten. Sobald die TN den Code eingeben, erscheinen sie hier — in Echtzeit.</p>`;
+    } else if(tab==='live'){
+      html += `<table><tr><th>Name</th><th>Status</th><th>Fortschritt</th><th>Richtig</th></tr>`;
+      students.sort((a,b)=>(b[1].solved||0)-(a[1].solved||0)).forEach(([id,s])=>{
+        const pct = Math.round(((s.solved||0)/GRAND_TOTAL)*100);
+        html += `<tr><td>${esc(s.name||'?')}</td>
+          <td><span class="pill ${s.online?'live':'idle'}">${s.online?'online':'weg'}</span></td>
+          <td><div class="pbar"><i style="width:${pct}%"></i></div><span class="muted">${s.solved||0}/${GRAND_TOTAL}</span></td>
+          <td>${s.correct||0} ✓ / ${s.wrong||0} ✗</td></tr>`;
+      });
+      html += `</table>`;
+    } else if(tab==='modules'){
+      html += `<table><tr><th>Name</th>${LESSON.modules.map(m=>`<th>${m.icon}</th>`).join('')}</tr>`;
+      students.forEach(([id,s])=>{
+        const md = s.modDone||{};
+        html += `<tr><td>${esc(s.name||'?')}</td>${LESSON.modules.map(m=>`<td>${md[m.id]?'✓':'·'}</td>`).join('')}</tr>`;
+      });
+      html += `</table><p class="muted">✓ = Modul abgeschlossen</p>`;
+    } else {
+      const agg = {};
+      students.forEach(([id,s])=>{ const w=s.wrongTasks||{}; Object.entries(w).forEach(([k,v])=>{ agg[k]=(agg[k]||0)+v; }); });
+      const sorted = Object.entries(agg).sort((a,b)=>b[1]-a[1]).slice(0,8);
+      if(sorted.length===0){ html += `<p class="muted">Noch keine Fehlerdaten.</p>`; }
+      else { html += `<table><tr><th>Aufgabe</th><th>Fehler gesamt</th></tr>`;
+        sorted.forEach(([k,v])=>{ const t=allTasks[+k]; html += `<tr><td>${t?esc(t.prompt):('#'+k)}</td><td>${v}×</td></tr>`; });
+        html += `</table><p class="muted">Diese Aufgaben bereiteten den meisten TN Probleme — gut für die Nachbesprechung.</p>`;
+      }
+    }
+    html += `<div class="actions"><button class="btn btn-ghost" id="leave">Session schließen</button></div></div>`;
+    app.innerHTML = html;
+    app.querySelectorAll('.seg button').forEach(b=> b.onclick=()=>{ tab=b.dataset.t; get(ref(db,`${ROOT}/${codeVal}`)).then(s=>paint(s.val())); });
+    document.getElementById('leave').onclick=()=>renderRoles();
+  }
+  onValue(ref(db, `${ROOT}/${codeVal}`), snap => paint(snap.val()));
+}
+
+/* ============ STUDENT ============ */
+function studentJoin(){
+  app.innerHTML = `<div class="card"><h2>Dem Kurs beitreten</h2>
+    <input id="s-code" class="code-input" maxlength="4" placeholder="CODE" autocapitalize="characters" autocomplete="off">
+    <input id="s-name" placeholder="Dein Name" autocomplete="off">
+    <div id="joinerr" class="muted" style="color:var(--bad);min-height:18px"></div>
+    <button class="btn btn-primary" id="dojoin">Beitreten</button></div>`;
+  document.getElementById('dojoin').onclick = async ()=>{
+    const codeVal = document.getElementById('s-code').value.trim().toUpperCase();
+    const name = document.getElementById('s-name').value.trim();
+    if(codeVal.length!==4 || !name){ document.getElementById('joinerr').textContent='Bitte Code (4 Zeichen) und Name eingeben.'; return; }
+    const snap = await get(ref(db, `${ROOT}/${codeVal}`));
+    if(!snap.exists()){ document.getElementById('joinerr').textContent='Diesen Code gibt es nicht. Bitte prüfen.'; return; }
+    const sid = "s_" + Date.now() + "_" + Math.floor(Math.random()*1000);
+    await set(ref(db, `${ROOT}/${codeVal}/students/${sid}`), {
+      name, online:true, solved:0, correct:0, wrong:0, modDone:{}, wrongTasks:{}, joinedAt:Date.now()
+    });
+    window.addEventListener('beforeunload', ()=>{ update(ref(db, `${ROOT}/${codeVal}/students/${sid}`), {online:false}); });
+    studentRun(codeVal, sid, name);
+  };
+}
+
+function studentRun(codeVal, sid, name){
+  const sref = ref(db, `${ROOT}/${codeVal}/students/${sid}`);
+  let curMod=0, view='intro';
+  let stack=[],pos=0,total=0,wrong=0,correctCount=0,solvedGlobal=0,answered=false,lastCorrect=false,sel=null,pairState=null,scrambleState=null;
+  const modDone={};
+
+  function navHTML(){
+    return `<div class="seg">${LESSON.modules.map((m,i)=>`<button data-i="${i}" class="${i===curMod?'active':''}">${m.icon} ${m.title.split(':')[0].split(' ')[0]}…</button>`).join('')}</div>`;
+  }
+  function wireNav(){ app.querySelectorAll('.seg button').forEach(b=> b.onclick=()=>{ curMod=+b.dataset.i; renderIntro(); }); }
+
+  function renderIntro(){
+    const m=LESSON.modules[curMod];
+    let html=navHTML()+`<div class="card"><h2>${m.icon} ${m.title}</h2><p class="muted">Hallo ${esc(name)}! Lies die Erklärung, dann starte die Übungen.</p>`;
+    m.intro.forEach(s=>{ html+=`<div class="panel${s.warn?' warn':''}"><h3>${s.h}</h3><p>${s.p}</p></div>`; });
+    html+=`<div class="actions"><button class="btn btn-primary" id="start">Übungen starten (${m.tasks.length}) →</button></div></div>`;
+    app.innerHTML=html; wireNav();
+    document.getElementById('start').onclick=()=>{ stack=m.tasks.slice(); pos=0; total=stack.length; wrong=0; correctCount=0; renderEx(); };
+  }
+  function gIndex(t){
+    const mid=LESSON.modules[curMod].id;
+    return allTasks.findIndex(x=> x._mod===mid && x.prompt===t.prompt && x.qt===t.qt
+      && (t.type!=='scramble' || x.answer===t.answer)
+      && (t.type==='scramble' || t.type==='pair' || JSON.stringify(x.options)===JSON.stringify(t.options)) );
+  }
+
+  function renderEx(){
+    if(pos>=stack.length){ return finishMod(); }
+    const t=stack[pos]; answered=false; sel=null; pairState=null; scrambleState=null;
+    const pct=Math.round((pos/total)*100);
+    let html=navHTML()+`<div class="card"><div class="qtype">${t.qt} · ${pos+1}/${total}</div>
+      <div class="bar" style="height:8px;background:#e3eded;border-radius:99px;overflow:hidden;margin-bottom:14px"><i style="display:block;height:100%;background:var(--accent);width:${pct}%"></i></div>
+      <p class="prompt">${fmt(t.prompt)}</p>${body(t)}<div class="feedback" id="fb"></div>
+      <div class="actions"><button class="btn btn-primary" id="checkbtn" disabled>Prüfen</button>
+      <button class="btn btn-primary hidden" id="nextbtn">Weiter →</button></div></div>`;
+    app.innerHTML=html;
+    document.querySelectorAll('.seg button').forEach(b=>b.disabled=true);
+    wire(t);
+    document.getElementById('checkbtn').onclick=()=>check(t);
+    document.getElementById('nextbtn').onclick=()=>nextEx(t);
+  }
+  function fmt(p){ return p.replace(/____/g,'<span class="gap"></span>'); }
+  function body(t){
+    if(t.type==='mc'||t.type==='gap') return '<div class="opts">'+t.options.map((o,i)=>`<button class="opt" data-i="${i}">${o}</button>`).join('')+'</div>';
+    if(t.type==='pair'){ const rights=shuffle(t.items.map((it,idx)=>({txt:it.r,idx}))); pairState={chosen:{}};
+      let h='<div class="pair-grid">'; t.items.forEach((it,li)=>{ h+=`<div class="pair-row"><div class="pair-l">${it.l}</div><div class="pair-r-opts" data-li="${li}">`;
+        rights.forEach(r=>{ h+=`<button class="pair-r" data-li="${li}" data-ri="${r.idx}">${r.txt}</button>`; }); h+='</div></div>'; }); return h+'</div>'; }
+    if(t.type==='scramble'){ const bank=shuffleSeeded(t.words.map((w,i)=>({w,i})), hashStr(t.answer)); scrambleState={picked:[],bank};
+      let h='<div class="tokens" id="toks"></div><div class="bank" id="bank">'; bank.forEach((b,bi)=>{ h+=`<button class="tok" data-bi="${bi}">${b.w}</button>`; }); return h+'</div>'; }
+    return '';
+  }
+  function wire(t){
+    if(t.type==='mc'||t.type==='gap') document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{ if(answered)return;
+      document.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel')); b.classList.add('sel'); sel=+b.dataset.i; document.getElementById('checkbtn').disabled=false; });
+    if(t.type==='pair') document.querySelectorAll('.pair-r').forEach(b=>b.onclick=()=>{ if(answered)return;
+      const li=+b.dataset.li, ri=+b.dataset.ri;
+      document.querySelector(`.pair-r-opts[data-li="${li}"]`).querySelectorAll('.pair-r').forEach(x=>x.classList.remove('sel'));
+      b.classList.add('sel'); pairState.chosen[li]=ri;
+      if(Object.keys(pairState.chosen).length===t.items.length) document.getElementById('checkbtn').disabled=false; });
+    if(t.type==='scramble') renderScramble(t);
+  }
+  function renderScramble(t){
+    const st=scrambleState, toks=document.getElementById('toks'), bank=document.getElementById('bank');
+    toks.innerHTML=''; st.picked.forEach((bi,pi)=>{ const c=document.createElement('button'); c.className='chip'; c.textContent=st.bank[bi].w;
+      c.onclick=()=>{ if(answered)return; st.picked.splice(pi,1); renderScramble(t); document.getElementById('checkbtn').disabled=st.picked.length===0; }; toks.appendChild(c); });
+    bank.querySelectorAll('.tok').forEach(b=>{ const bi=+b.dataset.bi; b.classList.toggle('used', st.picked.includes(bi));
+      b.onclick=()=>{ if(answered)return; if(st.picked.includes(bi))return; st.picked.push(bi); renderScramble(t); document.getElementById('checkbtn').disabled=false; }; });
+  }
+  function check(t){
+    if(answered)return; let correct=false;
+    if(t.type==='mc'||t.type==='gap'){ correct=sel===t.correct;
+      document.querySelectorAll('.opt').forEach((b,i)=>{ b.disabled=true; if(i===t.correct)b.classList.add('correct'); else if(i===sel)b.classList.add('wrong'); });
+    } else if(t.type==='pair'){ correct=true; t.items.forEach((it,li)=>{ if(pairState.chosen[li]!==li)correct=false; });
+      document.querySelectorAll('.pair-r').forEach(b=>{ const li=+b.dataset.li, ri=+b.dataset.ri; b.disabled=true;
+        if(pairState.chosen[li]===ri) b.classList.add(ri===li?'correct':'wrong'); if(ri===li) b.classList.add('correct'); });
+    } else if(t.type==='scramble'){ const built=scrambleState.picked.map(bi=>scrambleState.bank[bi].w).join(' '); correct=built===t.answer;
+      document.querySelectorAll('.tok,.chip').forEach(c=>{ c.style.pointerEvents='none'; c.style.borderColor=correct?'var(--ok)':'var(--bad)'; c.style.background=correct?'var(--ok-bg)':'var(--bad-bg)'; });
+    }
+    answered=true; lastCorrect=correct;
+    if(correct){ correctCount++; solvedGlobal++; }
+    else { wrong++; const gi=gIndex(t); if(gi>=0) bumpWrong(gi); }
+    pushProgress();
+    const fb=document.getElementById('fb'); fb.className='feedback show '+(correct?'ok':'bad');
+    if(correct){ fb.innerHTML='<b>✓ Richtig!</b>'+(t.exp?'<span>'+t.exp+'</span>':''); }
+    else{ let sol=t.type==='scramble'?('Lösung: '+t.answer):(t.type==='pair'?'Achte auf die grünen Paare.':'Richtig wäre: '+t.options[t.correct]);
+      fb.innerHTML='<b>✗ Noch nicht.</b><span>'+sol+(t.exp?' — '+t.exp:'')+'</span><br><span style="font-size:.8rem">Kommt am Ende noch einmal.</span>'; }
+    document.getElementById('checkbtn').classList.add('hidden');
+    document.getElementById('nextbtn').classList.remove('hidden');
+  }
+  function nextEx(t){ if(!lastCorrect){ stack.push(t); total=stack.length; } pos++; renderEx(); }
+  function finishMod(){
+    const m=LESSON.modules[curMod]; modDone[m.id]=true;
+    _cumCorrect += correctCount; _cumWrong += wrong;
+    correctCount=0; wrong=0;
+    pushProgress(true);
+    if(typeof window.goatcounter!=='undefined'){ try{ window.goatcounter.count({path:'dakku-live-'+m.id+'-completed',title:'DAKKU live '+m.id,event:true}); }catch(e){} }
+    const next = curMod<LESSON.modules.length-1 ? LESSON.modules[curMod+1]:null;
+    let html=navHTML()+`<div class="card" style="text-align:center"><div style="font-size:3rem">🎉</div>
+      <h2>${m.title} geschafft!</h2><p>Fehler in diesem Modul: ${wrong}</p><div class="actions">`;
+    if(next) html+=`<button class="btn btn-primary" id="nextmod">Weiter: ${next.icon} ${next.title} →</button>`;
+    else html+=`<button class="btn btn-primary" id="alldone">Fertig 🎓</button>`;
+    html+=`</div></div>`;
+    app.innerHTML=html; wireNav();
+    if(next) document.getElementById('nextmod').onclick=()=>{ curMod++; renderIntro(); window.scrollTo(0,0); };
+    else document.getElementById('alldone').onclick=()=>{ app.innerHTML=`<div class="card" style="text-align:center"><div style="font-size:3rem">🎓</div><h2>Alle Module fertig!</h2><p>Super gemacht, ${esc(name)}.</p></div>`; };
+  }
+  // cumulative across modules (declared before first use)
+  let _cumCorrect=0,_cumWrong=0,_wrongTasks={};
+  function pushProgress(modFlag){
+    update(sref, {
+      solved: solvedGlobal,
+      correct: _cumCorrect + correctCount,
+      wrong: _cumWrong + wrong,
+      online: true,
+      modDone,
+      lastSeen: Date.now()
+    });
+  }
+  function bumpWrong(gi){ _wrongTasks[gi]=(_wrongTasks[gi]||0)+1; update(sref,{wrongTasks:_wrongTasks}); }
+
+  renderIntro();
+}
+
+/* ===== shared utils ===== */
+function esc(s){ return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function shuffleSeeded(a,seed){ a=a.slice(); let s=seed||1; const r=()=>{ s=(s*1103515245+12345)&0x7fffffff; return s/0x7fffffff; };
+  for(let i=a.length-1;i>0;i--){ const j=Math.floor(r()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function hashStr(str){ let h=5381; for(let i=0;i<str.length;i++){ h=((h<<5)+h)+str.charCodeAt(i); h=h&0x7fffffff; } return h||1; }
+
+renderRoles();
+</script>
+</body>
+</html>
