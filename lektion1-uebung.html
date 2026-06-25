@@ -632,8 +632,7 @@ const backbtn = document.getElementById('backbtn');
 backbtn.onclick = ()=>{ renderOverview(); };
 
 function moduleUnlocked(i){
-  if(i===0) return true;
-  return !!state.done[i-1]; // previous module finished
+  return true; // alle Module frei zugänglich
 }
 
 /* ============ OVERVIEW ============ */
@@ -641,15 +640,13 @@ function renderOverview(){
   backbar.classList.add('hidden');
   let html = '<div class="overview">';
   html += '<h2>Eine neue Stelle</h2>';
-  html += '<p class="lead">Vier Module mit je 30 Aufgaben. Schließe ein Modul ab, um das Passwort fürs nächste zu bekommen — und lade dein Zertifikat herunter.</p>';
+  html += '<p class="lead">Vier Module mit je 30 Aufgaben. Du kannst jedes Modul jederzeit machen — in beliebiger Reihenfolge. Am Ende jedes Moduls gibt es ein Zertifikat zum Download.</p>';
   MODULES.forEach((m,i)=>{
     const done = !!state.done[i];
-    const unlocked = moduleUnlocked(i);
-    let cls = 'module-card'; if(done) cls+=' done'; if(!unlocked) cls+=' locked';
+    let cls = 'module-card'; if(done) cls+=' done';
     let status, sc;
     if(done){ status='✓ abgeschlossen'; sc='s-done'; }
-    else if(unlocked){ status='offen — jetzt starten'; sc='s-open'; }
-    else { status='🔒 gesperrt — Passwort nötig'; sc='s-lock'; }
+    else { status='offen — jetzt starten'; sc='s-open'; }
     html += `<div class="${cls}" data-i="${i}">
       <div class="num">${done?'✓':(i+1)}</div>
       <div class="body">
@@ -662,34 +659,13 @@ function renderOverview(){
   screen.innerHTML = html;
   screen.querySelectorAll('.module-card').forEach(c=>{
     const i = +c.dataset.i;
-    if(moduleUnlocked(i)) c.onclick = ()=> enterModule(i);
+    c.onclick = ()=> enterModule(i);
   });
 }
 
-/* ============ ENTER / UNLOCK ============ */
+/* ============ ENTER ============ */
 function enterModule(i){
-  const m = MODULES[i];
-  if(i>0 && !state.done[i-1]){ renderLock(i); return; }
   startModule(i);
-}
-function renderLock(i){
-  const m = MODULES[i];
-  backbar.classList.remove('hidden');
-  screen.innerHTML = `<div class="lockscreen card">
-    <div class="lock-ic">🔒</div>
-    <h2>${m.title}</h2>
-    <p>Gib das Passwort aus dem vorherigen Modul ein.</p>
-    <input id="pwin" placeholder="z. B. M2-XXXX-2026" autocapitalize="characters" autocomplete="off">
-    <div class="err" id="pwerr"></div>
-    <button class="btn btn-primary" id="pwgo">Freischalten</button>
-  </div>`;
-  const go = ()=>{
-    const v = document.getElementById('pwin').value.trim().toUpperCase();
-    if(v === m.passwordToUnlock){ startModule(i); }
-    else { document.getElementById('pwerr').textContent = 'Das Passwort stimmt nicht. Versuch es noch einmal.'; }
-  };
-  document.getElementById('pwgo').onclick = go;
-  document.getElementById('pwin').addEventListener('keydown',e=>{ if(e.key==='Enter') go(); });
 }
 
 /* ============ START MODULE ============ */
@@ -965,18 +941,21 @@ function renderModuleEnd(){
 
   if(!isLast){
     html += `<div class="pw-reward" id="pwreward">
-      <div class="lab">🎁 Passwort für ${MODULES[i+1].title.replace(/ —.*/,'')}</div>
-      <div class="code">${m.passwordReward}</div>
-      <div class="hint">Tippen zum Kopieren — du brauchst es, um das nächste Modul zu öffnen.</div>
+      <div class="lab">✓ Modul geschafft</div>
+      <div class="code" style="font-size:1.15rem">Weiter geht's!</div>
+      <div class="hint">Du kannst direkt zum nächsten Modul — oder über die Übersicht ein beliebiges anderes wählen.</div>
     </div>
     <div class="actions">
       <button class="btn btn-primary" id="nextmod">Weiter zu ${MODULES[i+1].title.replace(/ —.*/,'')} →</button>
+    </div>
+    <div class="actions">
+      <button class="btn btn-ghost" id="tooverview">Zur Übersicht</button>
     </div>`;
   } else {
     html += `<div class="pw-reward" id="pwreward" style="background:var(--ok)">
       <div class="lab">🏆 Lektion 1 komplett!</div>
-      <div class="code">LINIE1-L1-MEISTER</div>
-      <div class="hint">Glückwunsch — du hast alle vier Module von „Eine neue Stelle" geschafft.</div>
+      <div class="code" style="font-size:1.3rem">Glückwunsch!</div>
+      <div class="hint">Du hast alle vier Module von „Eine neue Stelle" geschafft.</div>
     </div>
     <div class="actions">
       <button class="btn btn-primary" id="tooverview">Zurück zur Übersicht</button>
@@ -997,9 +976,6 @@ function renderModuleEnd(){
     link.href = document.getElementById('cert').toDataURL('image/png');
     link.click();
   };
-  const pr = document.getElementById('pwreward');
-  if(pr && !isLast){ pr.onclick = ()=>{ navigator.clipboard && navigator.clipboard.writeText(m.passwordReward);
-    pr.querySelector('.hint').textContent='✓ Kopiert!'; }; }
   if(document.getElementById('nextmod')) document.getElementById('nextmod').onclick = ()=> enterModule(i+1);
   if(document.getElementById('tooverview')) document.getElementById('tooverview').onclick = ()=> renderOverview();
 }
